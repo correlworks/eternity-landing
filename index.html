@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>베베스완 이터니티 - 혼자서도 모두 할 수 있는 아기띠</title>
+    <meta name="description" content="베베스완 이터니티는 혼자서도 쉽게 착용하고 뺄 수 있는 조끼형 아기띠입니다. 2단계 착용, 부스터 시트 변환, 카시트 연동까지.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ivory: #FFFFFF;
+            --warm-brown: #8A6B57;
+            --deep-brown: #5C4033;
+            --accent-coral: #E8A598;
+            --soft-pink: #F5DED8;
+            --text-dark: #2C2418;
+            --text-light: #6B5D4F;
+            --gradient-warm: linear-gradient(135deg, #F5DED8 0%, #E8D4BA 50%, #D4C4B0 100%);
+            --gradient-dark: linear-gradient(180deg, #2C2418 0%, #1a1510 100%);
+        }
+
+        html { scroll-behavior: auto; }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--ivory);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100vh;
+            background: var(--ivory);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        .loading-screen.hidden { opacity: 0; visibility: hidden; }
+        .loading-spinner {
+            width: 40px; height: 40px;
+            border: 3px solid var(--soft-pink);
+            border-top-color: var(--warm-brown);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Video Container */
+        .video-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100vh;
+            z-index: 1;
+            background: var(--ivory);
+            overflow: hidden;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 5vh;
+        }
+        .video-container video {
+            width: 70%;
+            max-width: 600px;
+            height: auto;
+            max-height: 65vh;
+            object-fit: contain;
+        }
+
+        /* Scroll Content */
+        .scroll-content { position: relative; z-index: 2; pointer-events: none; }
+        .scroll-spacer { height: 500vh; pointer-events: none; }
+
+        /* Hero Section */
+        .hero-section {
+            position: fixed;
+            bottom: 0; left: 0;
+            width: 100%;
+            z-index: 10;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+            padding: 40px 5% 80px;
+            background: linear-gradient(to top, var(--ivory) 0%, rgba(255,255,255,0.98) 40%, rgba(255,255,255,0.85) 70%, rgba(255,255,255,0) 100%);
+        }
+        .hero-content { text-align: center; max-width: 800px; margin: 0 auto; }
+        .hero-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            letter-spacing: 10px;
+            margin-bottom: 15px;
+            color: var(--warm-brown);
+            text-transform: uppercase;
+        }
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 7vw, 70px);
+            font-weight: 600;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            color: var(--deep-brown);
+        }
+        .hero-subtitle {
+            font-size: clamp(15px, 1.8vw, 18px);
+            color: var(--text-light);
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.9;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 20px; left: 50%;
+            transform: translateX(-50%);
+            z-index: 25;
+            text-align: center;
+            color: var(--warm-brown);
+            transition: opacity 0.5s ease;
+        }
+        .scroll-indicator.hidden { opacity: 0; pointer-events: none; }
+        .scroll-text { font-size: 11px; letter-spacing: 3px; margin-bottom: 8px; text-transform: uppercase; }
+        .scroll-arrow {
+            width: 22px; height: 36px;
+            border: 2px solid var(--warm-brown);
+            border-radius: 11px;
+            margin: 0 auto;
+            position: relative;
+            opacity: 0.7;
+        }
+        .scroll-arrow::after {
+            content: '';
+            position: absolute;
+            top: 6px; left: 50%;
+            transform: translateX(-50%);
+            width: 4px; height: 6px;
+            background: var(--warm-brown);
+            border-radius: 2px;
+            animation: scrollBounce 1.5s infinite;
+        }
+        @keyframes scrollBounce {
+            0%, 100% { top: 8px; opacity: 1; }
+            50% { top: 20px; opacity: 0.3; }
+        }
+
+        /* Scroll Messages */
+        .scroll-messages {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100vh;
+            z-index: 15;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .scroll-message {
+            position: absolute;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            padding: 0 20px;
+            max-width: 800px;
+        }
+        .scroll-message.active { opacity: 1; transform: translateY(0); }
+        .scroll-message h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(24px, 4vw, 40px);
+            font-weight: 600;
+            color: var(--deep-brown);
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+        .scroll-message p {
+            font-size: clamp(14px, 2vw, 18px);
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+        .scroll-message .highlight { color: var(--warm-brown); font-weight: 600; }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0; left: 0;
+            height: 3px;
+            background: var(--accent-coral);
+            z-index: 100;
+            transition: width 0.1s ease;
+        }
+
+        /* Info Sections */
+        .info-section { background: var(--ivory); position: relative; z-index: 30; }
+
+        /* Slide Section */
+        .slide-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 5%;
+            position: relative;
+        }
+        .slide-section:nth-child(odd) {
+            background: linear-gradient(180deg, var(--ivory) 0%, #F8F5F2 100%);
+        }
+        .slide-section:nth-child(even) {
+            background: white;
+        }
+
+        .slide-content {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .slide-number {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(60px, 12vw, 120px);
+            font-weight: 700;
+            color: var(--accent-coral);
+            opacity: 0.12;
+            line-height: 1;
+            margin-bottom: -40px;
+        }
+
+        .slide-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 600;
+            color: var(--deep-brown);
+            margin-bottom: 30px;
+            line-height: 1.3;
+            max-width: 800px;
+        }
+
+        .slide-body {
+            font-size: clamp(16px, 2vw, 20px);
+            color: var(--text-light);
+            line-height: 1.9;
+            max-width: 700px;
+        }
+
+        .slide-body strong {
+            color: var(--deep-brown);
+            font-weight: 600;
+        }
+
+        /* Steps */
+        .steps-container {
+            margin-top: 40px;
+        }
+        .step-group {
+            margin-bottom: 30px;
+        }
+        .step-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--warm-brown);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+        .step-list {
+            display: grid;
+            gap: 12px;
+        }
+        .step-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 24px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(138, 107, 87, 0.06);
+        }
+        .step-number-badge {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-warm);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--deep-brown);
+            flex-shrink: 0;
+        }
+        .step-text {
+            font-size: 16px;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .slide-note {
+            margin-top: 30px;
+            padding: 24px;
+            background: var(--soft-pink);
+            border-radius: 16px;
+            font-size: 15px;
+            color: var(--deep-brown);
+            line-height: 1.8;
+        }
+
+        /* Dark Section */
+        .slide-section.dark {
+            background: var(--gradient-dark);
+        }
+        .slide-section.dark .slide-number {
+            color: var(--accent-coral);
+            opacity: 0.2;
+        }
+        .slide-section.dark .slide-title {
+            color: white;
+        }
+        .slide-section.dark .slide-body {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .slide-section.dark .slide-body strong {
+            color: var(--accent-coral);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-warm);
+            padding: 100px 5%;
+            text-align: center;
+        }
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 600;
+            color: var(--deep-brown);
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        .cta-desc {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            line-height: 1.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 20px 60px;
+            background: var(--deep-brown);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(92, 64, 51, 0.3);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(92, 64, 51, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 60px 5% 30px;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+        .footer-desc {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.8;
+        }
+        .footer-title {
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: var(--accent-coral);
+        }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover { color: white; }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* Fade Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Slide with Image */
+        .slide-with-image {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px 60px;
+            align-items: center;
+            min-height: calc(100vh - 200px);
+        }
+        .slide-text {
+            order: 1;
+            min-width: 0;
+        }
+        .slide-with-image .slide-title {
+            margin-bottom: 28px;
+            line-height: 1.4;
+            max-width: none;
+            word-break: keep-all;
+        }
+        .slide-with-image .slide-number {
+            margin-bottom: -32px;
+        }
+        .slide-with-image .slide-body {
+            max-width: none;
+        }
+        .slide-image {
+            order: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .slide-image img {
+            width: 100%;
+            max-width: none;
+            height: calc(100vh - 200px);
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(138, 107, 87, 0.15);
+        }
+        .slide-section.dark .slide-image img {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Campaign Section */
+        .campaign-section {
+            background: var(--gradient-dark) !important;
+        }
+        .campaign-section .slide-number {
+            color: var(--accent-coral);
+            opacity: 0.3;
+        }
+        .campaign-section .slide-title {
+            color: white;
+        }
+        .campaign-section .slide-body {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .campaign-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 36px;
+            margin-bottom: 24px;
+        }
+        .campaign-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .campaign-icon {
+            font-size: 32px;
+        }
+        .campaign-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+        }
+        .campaign-content {
+            display: grid;
+            gap: 20px;
+        }
+        .campaign-item {
+            padding-left: 20px;
+            border-left: 3px solid var(--accent-coral);
+        }
+        .campaign-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--accent-coral);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .campaign-item p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+        .campaign-item strong {
+            color: white;
+        }
+        .campaign-highlight {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 24px;
+            background: rgba(232, 165, 152, 0.15);
+            border-radius: 16px;
+            margin-top: 10px;
+        }
+        .highlight-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent-coral);
+            line-height: 1;
+        }
+        .highlight-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            line-height: 1.4;
+        }
+        .highlight-text span {
+            font-size: 13px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .donation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .donation-category {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+        }
+        .donation-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--accent-coral);
+            margin-bottom: 12px;
+        }
+        .donation-list {
+            list-style: none;
+            display: grid;
+            gap: 8px;
+        }
+        .donation-list li {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            padding-left: 16px;
+            position: relative;
+        }
+        .donation-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-coral);
+        }
+        .campaign-summary {
+            margin-top: 40px;
+            padding: 32px;
+            background: var(--gradient-warm);
+            border-radius: 20px;
+            text-align: center;
+        }
+        .campaign-summary p {
+            font-size: 17px;
+            color: var(--deep-brown);
+            line-height: 2;
+        }
+        .campaign-summary strong {
+            color: var(--deep-brown);
+            font-weight: 700;
+        }
+
+        /* Color Grid */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .color-card {
+            text-align: center;
+            transition: transform 0.4s ease;
+        }
+        .color-card:hover {
+            transform: translateY(-10px);
+        }
+        .color-image {
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            aspect-ratio: 3 / 4;
+        }
+        .color-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .color-card:hover .color-image img {
+            transform: scale(1.05);
+        }
+        .color-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 6px;
+        }
+        .color-desc {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .color-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+        }
+
+        /* Q&A Section */
+        .qa-section-full {
+            background: linear-gradient(180deg, #F8F5F2 0%, var(--ivory) 100%) !important;
+        }
+        .qa-category {
+            margin-bottom: 40px;
+        }
+        .qa-category-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--warm-brown);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--soft-pink);
+        }
+        .qa-list {
+            display: grid;
+            gap: 16px;
+        }
+        .qa-item {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(138, 107, 87, 0.06);
+        }
+        .qa-question {
+            padding: 20px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--deep-brown);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+        .qa-question:hover {
+            background: rgba(245, 222, 216, 0.3);
+        }
+        .qa-question::after {
+            content: '+';
+            font-size: 22px;
+            color: var(--warm-brown);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 16px;
+        }
+        .qa-item.open .qa-question::after {
+            transform: rotate(45deg);
+        }
+        .qa-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+        .qa-item.open .qa-answer {
+            max-height: 400px;
+            padding: 0 24px 20px;
+        }
+        .qa-answer p {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.9;
+        }
+        .qa-answer strong {
+            color: var(--deep-brown);
+        }
+        .tip-box {
+            margin-top: 50px;
+            padding: 28px 32px;
+            background: var(--gradient-warm);
+            border-radius: 20px;
+            position: relative;
+        }
+        .tip-label {
+            position: absolute;
+            top: -12px;
+            left: 24px;
+            padding: 6px 16px;
+            background: var(--deep-brown);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            border-radius: 20px;
+        }
+        .tip-box p {
+            font-size: 15px;
+            color: var(--deep-brown);
+            line-height: 1.9;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .slide-with-image {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                min-height: auto;
+            }
+            .slide-text { order: 1; }
+            .slide-image { 
+                order: 2;
+                justify-content: center;
+                height: auto;
+            }
+            .slide-image img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+        @media (max-width: 768px) {
+            .slide-section { padding: 80px 5%; min-height: auto; }
+            .slide-number { margin-bottom: -20px; }
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .step-item { padding: 16px 20px; }
+            .donation-grid { grid-template-columns: 1fr; }
+            .campaign-card { padding: 24px; }
+            .campaign-highlight { flex-direction: column; text-align: center; }
+            .highlight-number { font-size: 36px; }
+            .slide-image img {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Video Container -->
+    <div class="video-container" id="videoContainer">
+        <video id="scrollVideo" muted playsinline preload="auto">
+            <source src="https://fjkgfxfisgxtdvdvcwhc.supabase.co/storage/v1/object/public/360_white/eternity_360_rotation.webm" type="video/webm">
+        </video>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero-section" id="heroSection">
+        <div class="hero-content">
+            <p class="hero-brand">bebeswan</p>
+            <h1 class="hero-title">ETERNITY</h1>
+            <p class="hero-subtitle">
+                너무 간단해서,<br>
+                혼자서도 모두 할 수 있습니다
+            </p>
+        </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" id="scrollIndicator">
+        <p class="scroll-text">Scroll to Explore</p>
+        <div class="scroll-arrow"></div>
+    </div>
+
+    <!-- Scroll Messages -->
+    <div class="scroll-messages" id="scrollMessages">
+        <div class="scroll-message" data-start="0.10" data-end="0.22">
+            <h2>2단계 착용</h2>
+            <p>조끼 입고, 지퍼 올리면<br><span class="highlight">끝.</span></p>
+        </div>
+        <div class="scroll-message" data-start="0.26" data-end="0.38">
+            <h2>부스터 시트</h2>
+            <p>의자를 아기 시트로<br>즉시 변환</p>
+        </div>
+        <div class="scroll-message" data-start="0.42" data-end="0.54">
+            <h2>카시트 연동</h2>
+            <p>아기만 들어 올려<br><span class="highlight">바로 출발</span></p>
+        </div>
+        <div class="scroll-message" data-start="0.58" data-end="0.70">
+            <h2>스테이락 수유</h2>
+            <p>지퍼만 내리면<br>어디서든 수유 가능</p>
+        </div>
+        <div class="scroll-message" data-start="0.74" data-end="0.86">
+            <h2>무소음 전달</h2>
+            <p>잠든 아기 깨우지 않고<br><span class="highlight">파트너에게 전달</span></p>
+        </div>
+        <div class="scroll-message" data-start="0.88" data-end="0.98">
+            <h2>손을 자유롭게</h2>
+            <p>설거지, 빨래, 일과 관리<br>모두 가능합니다</p>
+        </div>
+    </div>
+
+    <!-- Scroll Content -->
+    <div class="scroll-content">
+        <div class="scroll-spacer"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="info-section">
+
+        <!-- Slide 01 -->
+        <section class="slide-section">
+            <div class="slide-content slide-with-image">
+                <div class="slide-text">
+                    <div class="slide-number fade-in">01</div>
+                    <h2 class="slide-title fade-in">너무 간단해서, 혼자서도 모두 할 수 있습니다.</h2>
+                    <p class="slide-body fade-in">
+                        아무 도움 없이도 순식간에 준비 완료. 직관적인 디자인으로 아기에게 편안한 품을 제공하는 동시에, 
+                        당신은 <strong>손을 자유롭게</strong> 사용하여 설거지하고, 빨래 개고, 하루 일과를 관리할 수 있습니다.
+                    </p>
+                </div>
+                <div class="slide-image fade-in">
+                    <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1770352284288.png" alt="혼자서도 모두 할 수 있습니다">
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 02 -->
+        <section class="slide-section">
+            <div class="slide-content slide-with-image">
+                <div class="slide-text">
+                    <div class="slide-number fade-in">02</div>
+                    <h2 class="slide-title fade-in">아기를 착용하고 빼는 것이 단 2단계입니다.</h2>
+                    
+                    <div class="steps-container fade-in">
+                        <div class="step-group">
+                            <div class="step-label">착용</div>
+                            <div class="step-list">
+                                <div class="step-item">
+                                    <div class="step-number-badge">1</div>
+                                    <div class="step-text">조끼를 입습니다.</div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number-badge">2</div>
+                                    <div class="step-text">아기를 안에 넣고 지퍼를 올립니다. <strong>끝.</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="step-group">
+                            <div class="step-label">빼기</div>
+                            <div class="step-list">
+                                <div class="step-item">
+                                    <div class="step-number-badge">1</div>
+                                    <div class="step-text">지퍼를 내립니다.</div>
+                                </div>
+                                <div class="step-item">
+                                    <div class="step-number-badge">2</div>
+                                    <div class="step-text">아기를 들어 올립니다. <strong>끝.</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="slide-note fade-in">
+                        복잡한 버클도 없습니다. 헷갈리는 스트랩도 없습니다.<br>
+                        그저 <strong>손쉬운 간편함</strong>입니다.
+                    </div>
+                </div>
+                <div class="slide-image fade-in">
+                    <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1770352707881.png" alt="단 2단계">
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 03 -->
+        <section class="slide-section dark">
+            <div class="slide-content slide-with-image">
+                <div class="slide-text">
+                    <div class="slide-number fade-in">03</div>
+                    <h2 class="slide-title fade-in">당신의 식탁은<br>언제나 준비되어 있습니다.</h2>
+                    <p class="slide-body fade-in">
+                        카페, 레스토랑, 또는 친구 집 방문 시에도? 베베스완 이터니티는 
+                        <strong>일반 의자를 즉시 안전하고 튼튼한 아기 부스터 시트로 변신</strong>시킵니다. 
+                        부피가 큰 추가 장비는 집에 두고 여행 걱정을 없애세요.
+                    </p>
+                </div>
+                <div class="slide-image fade-in">
+                    <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1770354609264.png" alt="부스터 시트 세로버전">
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 04 -->
+        <section class="slide-section" style="background: linear-gradient(180deg, var(--ivory) 0%, #F8F5F2 100%);">
+            <div class="slide-content">
+                <div class="slide-number fade-in">04</div>
+                <h2 class="slide-title fade-in">아기 착용 상태에서<br>운전까지 한 번에.</h2>
+                <p class="slide-body fade-in">
+                    캐리어 전체를 벗길 필요 없습니다. 그저 <strong>아기를 들어 올려 카시트에 앉히기만</strong> 하면 됩니다. 
+                    조끼는 착용한 채로 있으므로 즉시 출발 준비가 완료됩니다.
+                </p>
+            </div>
+        </section>
+
+        <!-- Slide 05 -->
+        <section class="slide-section" style="background: white;">
+            <div class="slide-content">
+                <div class="slide-number fade-in">05</div>
+                <h2 class="slide-title fade-in">드디어 아기를 재웠나요?<br>이제 당신은 더 이상 묶여있지 않습니다.</h2>
+                <p class="slide-body fade-in">
+                    아기가 잠든 후 화장실을 사용해야 하나요? 우리 디자인은 <strong>허리 벨트를 풀지 않고도 
+                    조끼 안에서 아기를 안전하게 고정</strong>합니다. 깨울 위험 없이 당신에게 잠시의 여유를 제공합니다.
+                </p>
+            </div>
+        </section>
+
+        <!-- Slide 06 -->
+        <section class="slide-section dark">
+            <div class="slide-content">
+                <div class="slide-number fade-in">06</div>
+                <h2 class="slide-title fade-in">잠든 아기를 깨우지 않고 옮기기.<br>가능합니다.</h2>
+                <p class="slide-body fade-in">
+                    디자인이 가능하게 한 <strong>궁극의 부모 팀워크</strong>. 
+                    그저 뒷면의 지퍼를 내리고 아기를—여전히 캐리어 안에 편안히 있는—파트너에게 전달하세요. 
+                    전달은 조용하고 매끄럽습니다.
+                </p>
+            </div>
+        </section>
+
+        <!-- Slide 07 -->
+        <section class="slide-section">
+            <div class="slide-content">
+                <div class="slide-number fade-in">07</div>
+                <h2 class="slide-title fade-in">그들의 일정에 맞춘 영양 공급.<br>번거로움 없이.</h2>
+                <p class="slide-body fade-in">
+                    캐리어를 분해하거나 사적인 장소를 찾을 필요가 없습니다. 
+                    <strong>간단한 지퍼 내리기만으로 어디서든 즉시 모유 수유가 가능</strong>합니다.
+                </p>
+            </div>
+        </section>
+
+        <!-- Slide 08 -->
+        <section class="slide-section dark">
+            <div class="slide-content">
+                <div class="slide-number fade-in">08</div>
+                <h2 class="slide-title fade-in">당신의 스타일에 맞는<br>컬러를 선택하세요.</h2>
+                <p class="slide-body fade-in">
+                    베베스완 이터니티는 4가지 프리미엄 컬러로<br>
+                    어떤 스타일에도 자연스럽게 어울립니다.
+                </p>
+                <div class="color-grid fade-in">
+                    <div class="color-card">
+                        <div class="color-image">
+                            <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1770355274765.jpg" alt="에터널 베이지">
+                        </div>
+                        <div class="color-name">Eternal Beige</div>
+                        <div class="color-desc">화사한 감성 디자인</div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-image">
+                            <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1770355285033.jpg" alt="쉐도우 모카">
+                        </div>
+                        <div class="color-name">Shadow Mocha</div>
+                        <div class="color-desc">깊이 있는 프리미엄 톤</div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-image">
+                            <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1770355274769.jpg" alt="카본 블랙">
+                        </div>
+                        <div class="color-name">Carbon Black</div>
+                        <div class="color-desc">시크한 모던 스타일</div>
+                    </div>
+                    <div class="color-card">
+                        <div class="color-image">
+                            <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1770355274771.jpg" alt="티타늄 실버">
+                        </div>
+                        <div class="color-name">Titanium Silver</div>
+                        <div class="color-desc">세련된 어반 그레이</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Q&A Section -->
+        <section class="slide-section qa-section-full">
+            <div class="slide-content">
+                <div class="slide-number fade-in">Q&A</div>
+                <h2 class="slide-title fade-in">자주 묻는 질문</h2>
+                <p class="slide-body fade-in" style="margin-bottom: 50px;">
+                    베베스완 이터니티 조끼아기띠에 대해<br>고객들이 가장 궁금해하는 질문들을 정리했습니다.
+                </p>
+
+                <!-- Category 1 -->
+                <div class="qa-category fade-in">
+                    <h3 class="qa-category-title">1. 사용 대상 및 사이즈 관련</h3>
+                    <div class="qa-list">
+                        <div class="qa-item">
+                            <div class="qa-question">Q: 아기 몇 개월부터 사용 가능한가요?</div>
+                            <div class="qa-answer">
+                                <p><strong>A:</strong> 신생아(0개월)부터 <strong>36개월(몸무게 15kg 미만)</strong>까지 사용 가능합니다.</p>
+                            </div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="qa-question">Q: 체격이 큰 아빠나 조부모님도 착용할 수 있나요?</div>
+                            <div class="qa-answer">
+                                <p><strong>A:</strong> 네, 가능합니다. 이터니티 모델은 사이즈 제한을 없애 <strong>가슴 및 허리둘레 최대 160cm</strong>까지 조절이 가능하며, 착용자 몸무게 43~100kg, 신장 155~190cm까지 폭넓게 권장합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 2 -->
+                <div class="qa-category fade-in">
+                    <h3 class="qa-category-title">2. 착용감 및 건강 관련</h3>
+                    <div class="qa-list">
+                        <div class="qa-item">
+                            <div class="qa-question">Q: 장시간 착용해도 정말 어깨와 허리가 안 아픈가요?</div>
+                            <div class="qa-answer">
+                                <p><strong>A:</strong> 일반 아기띠와 달리 <strong>조끼형 디자인</strong>을 채택하여 아기의 무게를 어깨나 허리 한 점이 아닌 <strong>등 전체로 고르게 분산</strong>시킵니다. 공인인증기관의 압력 시험을 통해 우수한 무게 분산 기술이 입증되었으며, 부모가 1자 자세를 유지하도록 도와 통증을 최소화합니다.</p>
+                            </div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="qa-question">Q: 혼자서도 쉽게 착용할 수 있나요?</div>
+                            <div class="qa-answer">
+                                <p><strong>A:</strong> 네, 등 뒤에 손을 뻗어 채워야 하는 복잡한 버클이 없습니다. 조끼처럼 입고 <strong>전면 지퍼만 올리면 끝나는 방식</strong>으로 혼자서도 <strong>5초 만에 착용</strong>이 가능합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="qa-category fade-in">
+                    <h3 class="qa-category-title">3. 주요 기능 및 활용 관련</h3>
+                    <div class="qa-list">
+                        <div class="qa-item">
+                            <div class="qa-question">Q: 아기띠를 한 상태로 수유가 가능한가요?</div>
+                            <div class="qa-answer">
+                                <p><strong>A:</strong> 네, 아기띠를 벗지 않고 <strong>안쪽의 스테이락 지퍼</strong>를 내리거나 어깨 버클을 조절하여 마주 본 상태 그대로 <strong>모유 및 분유 수유</strong>를 편하게 할 수 있습니다.</p>
+                            </div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="qa-question">Q: 외출 시 아기 의자(부스터)로도 쓸 수 있나요?</div>
+                            <div class="qa-answer">
+                                <p><strong>A:</strong> 그렇습니다. 식당이나 카페의 <strong>일반 의자에 아기띠를 입히고 고정</strong>하면 훌륭한 휴대용 부스터가 됩니다.</p>
+                            </div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="qa-question">Q: 잠든 아기를 깨우지 않고 눕힐 수 있나요?</div>
+                            <div class="qa-answer">
+                                <p><strong>A:</strong> 소음이 심한 벨크로(찍찍이) 대신 <strong>무소음 지퍼</strong>를 사용합니다. 등 쪽의 <strong>백지퍼</strong>를 열어 양파 껍질을 벗기듯 조용히 아기를 눕힐 수 있어 잠든 아기를 깨울 걱정이 없습니다.</p>
+                            </div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="qa-question">Q: 카시트에 태울 때 매번 아기띠를 벗어야 하나요?</div>
+                            <div class="qa-answer">
+                                <p><strong>A:</strong> 아기띠 전체를 벗을 필요 없이 <strong>아기만 쏙 안아서 카시트에 태우면 됩니다.</strong> 부모는 아기띠(조끼)를 입은 채로 바로 운전이 가능해 매우 편리합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 4 -->
+                <div class="qa-category fade-in">
+                    <h3 class="qa-category-title">4. 소재 및 안전성 관련</h3>
+                    <div class="qa-list">
+                        <div class="qa-item">
+                            <div class="qa-question">Q: 여름에 사용하기에 너무 덥지는 않을까요?</div>
+                            <div class="qa-answer">
+                                <p><strong>A:</strong> 통기성이 우수한 <strong>에어메쉬 소재</strong>를 사용했습니다. 특히 부모와 아기 사이에 <strong>에어쉴드(메쉬 막)</strong>가 있어 땀 참을 방지하며, 전용 포켓에 <strong>아이스팩</strong>을 넣어 더 시원하게 사용할 수 있습니다.</p>
+                            </div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="qa-question">Q: 안전 인증은 받은 제품인가요?</div>
+                            <div class="qa-answer">
+                                <p><strong>A:</strong> 한국의 <strong>KC 인증</strong>은 물론, 미국의 <strong>CPSIA</strong>와 <strong>ASTM</strong>, 유럽의 <strong>CE 인증</strong>을 모두 획득했습니다. 또한 아기의 고관절 건강을 고려한 설계로 <strong>국제고관절협회(IHDI)</strong>의 인증도 완료되었습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 5 -->
+                <div class="qa-category fade-in">
+                    <h3 class="qa-category-title">5. 세탁 및 관리 관련</h3>
+                    <div class="qa-list">
+                        <div class="qa-item">
+                            <div class="qa-question">Q: 세탁기 사용이 가능한가요?</div>
+                            <div class="qa-answer">
+                                <p><strong>A:</strong> 찬물에 중성세제를 사용하여 <strong>세탁망에 넣고 울코스로 단독 세탁</strong>하시길 권장합니다. 지퍼와 버클은 모두 잠근 상태로 세탁해야 하며, 제품 변형 방지를 위해 <strong>건조기 사용은 절대 금지</strong>하며 그늘에서 자연 건조해 주세요.</p>
+                            </div>
+                        </div>
+                        <div class="qa-item">
+                            <div class="qa-question">Q: 무상 A/S 기간은 어떻게 되나요?</div>
+                            <div class="qa-answer">
+                                <p><strong>A:</strong> 제품 구입일로부터 <strong>1년 동안 품질보증</strong>이 적용되며, 제조상의 결함이 있을 경우 무상 수리를 받으실 수 있습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tip Box -->
+                <div class="tip-box fade-in">
+                    <div class="tip-label">TIP</div>
+                    <p>아기를 안을 때 <strong>지퍼를 밑에서 한 뼘 정도 남기고</strong> 맞물리면 훨씬 쉽게 올릴 수 있으며, 지퍼를 올린 후 한 번 더 눌러 <strong>이중 잠금</strong>을 확인하면 더욱 안전합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10일 무료 체험 및 기부 캠페인 Section -->
+        <section class="slide-section campaign-section">
+            <div class="slide-content">
+                <div class="slide-number fade-in">TRUST</div>
+                <h2 class="slide-title fade-in">10일 무료 체험 &<br>기부 캠페인</h2>
+                <p class="slide-body fade-in" style="margin-bottom: 50px;">
+                    제품에 대한 강력한 자신감을 바탕으로 소비자의 만족을 보장하는 동시에<br>
+                    사회적 가치를 실현하는 베베스완만의 독특한 경영 철학입니다.
+                </p>
+
+                <!-- Campaign Feature 1 -->
+                <div class="campaign-card fade-in">
+                    <div class="campaign-header">
+                        <div class="campaign-icon">🎁</div>
+                        <h3 class="campaign-title">10일 무료 체험 및 100% 환불 보장</h3>
+                    </div>
+                    <div class="campaign-content">
+                        <div class="campaign-item">
+                            <div class="campaign-label">체험 서비스</div>
+                            <p>고객은 제품을 구매한 후 집에서 최대 <strong>10일 동안</strong> 편하게 직접 착용하며 체험해 볼 수 있습니다.</p>
+                        </div>
+                        <div class="campaign-item">
+                            <div class="campaign-label">자유로운 반품</div>
+                            <p>제품이 맞지 않거나 디자인, 색상, 기능 등에 만족하지 못할 경우, <strong>10일 이내에 100% 환불</strong>을 진행해 주는 '무료 반품' 서비스를 제공합니다.</p>
+                        </div>
+                        <div class="campaign-highlight">
+                            <div class="highlight-number">1.3%</div>
+                            <div class="highlight-text">반품률<br><span>고객 만족의 자신감</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campaign Feature 2 -->
+                <div class="campaign-card fade-in">
+                    <div class="campaign-header">
+                        <div class="campaign-icon">💝</div>
+                        <h3 class="campaign-title">반품된 제품의 기부 프로세스</h3>
+                    </div>
+                    <div class="campaign-content">
+                        <div class="campaign-item">
+                            <div class="campaign-label">재판매 금지 및 후원</div>
+                            <p>무료 체험 기간 중 고객이 반품한 제품은 <strong>다시 판매하는 대신</strong>, 도움이 필요한 어려운 이웃에게 전달됩니다.</p>
+                        </div>
+                        <div class="campaign-item">
+                            <div class="campaign-label">자원 순환과 나눔</div>
+                            <p>단순 변심 등으로 반품된 양질의 제품을 폐기하지 않고 <strong>사회 취약 계층을 위한 후원 물품</strong>으로 활용함으로써 지속 가능한 나눔을 실천합니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campaign Feature 3 -->
+                <div class="campaign-card fade-in">
+                    <div class="campaign-header">
+                        <div class="campaign-icon">🤝</div>
+                        <h3 class="campaign-title">주요 후원 대상 및 단체</h3>
+                    </div>
+                    <div class="campaign-content">
+                        <div class="donation-grid">
+                            <div class="donation-category">
+                                <div class="donation-label">가정</div>
+                                <ul class="donation-list">
+                                    <li>미혼모 가정</li>
+                                    <li>한부모 가정</li>
+                                    <li>조부모 가정</li>
+                                </ul>
+                            </div>
+                            <div class="donation-category">
+                                <div class="donation-label">단체 및 기관</div>
+                                <ul class="donation-list">
+                                    <li>월드비전</li>
+                                    <li>굿네이버스</li>
+                                    <li>선교 센터</li>
+                                    <li>보육원</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campaign Summary -->
+                <div class="campaign-summary fade-in">
+                    <p>이 캠페인은 고객에게는 <strong>실패 없는 구매 경험</strong>을 제공하고,<br>
+                    기업은 <strong>사회적 책임</strong>을 다하며,<br>
+                    어려운 환경의 부모들에게는 <strong>육아의 무게를 덜어주는</strong><br>
+                    베베스완의 핵심적인 상생 모델입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="slide-content fade-in">
+                <h2 class="cta-title">혼자서도 모두 할 수 있는<br>육아의 새로운 기준</h2>
+                <p class="cta-desc">
+                    베베스완 이터니티와 함께라면<br>
+                    두 손을 자유롭게, 마음은 편안하게.
+                </p>
+                <a href="#" class="cta-button">ETERNITY 만나보기</a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-brand">bebeswan</div>
+                    <p class="footer-desc">
+                        혼자서도 모두 할 수 있는<br>
+                        조끼형 아기띠의 새로운 기준
+                    </p>
+                </div>
+                <div>
+                    <h4 class="footer-title">PRODUCT</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">ETERNITY 조끼 아기띠</a></li>
+                        <li><a href="#">V5 아기띠</a></li>
+                        <li><a href="#">액세서리</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">SUPPORT</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">사용 설명서</a></li>
+                        <li><a href="#">자주 묻는 질문</a></li>
+                        <li><a href="#">품질 보증</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">CONTACT</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">고객센터</a></li>
+                        <li><a href="#">이메일 문의</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2025 bebeswan. All rights reserved.
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // ============================================
+        // Scroll-based Video Frame Controller
+        // ============================================
+        const video = document.getElementById('scrollVideo');
+        const scrollSpacer = document.querySelector('.scroll-spacer');
+        const progressBar = document.getElementById('progressBar');
+        const heroSection = document.getElementById('heroSection');
+        const scrollIndicator = document.getElementById('scrollIndicator');
+        const loadingScreen = document.getElementById('loadingScreen');
+        const scrollMessages = document.querySelectorAll('.scroll-message');
+        
+        let targetTime = 0;
+        let videoReady = false;
+        let videoDuration = 0;
+        
+        function handleScroll() {
+            const scrollTop = window.scrollY;
+            const maxScroll = scrollSpacer.offsetHeight - window.innerHeight;
+            const scrollProgress = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
+            
+            progressBar.style.width = `${scrollProgress * 100}%`;
+            
+            if (videoReady && videoDuration > 0) {
+                targetTime = scrollProgress * videoDuration;
+            }
+            
+            const heroOpacity = 1 - (scrollProgress * 8);
+            heroSection.style.opacity = Math.max(0, heroOpacity);
+            
+            if (scrollProgress > 0.03) {
+                scrollIndicator.classList.add('hidden');
+            } else {
+                scrollIndicator.classList.remove('hidden');
+            }
+            
+            scrollMessages.forEach(message => {
+                const start = parseFloat(message.dataset.start);
+                const end = parseFloat(message.dataset.end);
+                if (scrollProgress >= start && scrollProgress <= end) {
+                    message.classList.add('active');
+                } else {
+                    message.classList.remove('active');
+                }
+            });
+        }
+        
+        function renderLoop() {
+            if (videoReady && !video.seeking) {
+                const timeDiff = Math.abs(targetTime - video.currentTime);
+                if (timeDiff > 0.01) {
+                    video.currentTime = targetTime;
+                }
+            }
+            requestAnimationFrame(renderLoop);
+        }
+        
+        function initVideo() {
+            video.addEventListener('loadedmetadata', () => {
+                videoDuration = video.duration;
+                videoReady = true;
+                setTimeout(() => loadingScreen.classList.add('hidden'), 500);
+                requestAnimationFrame(renderLoop);
+            });
+            video.addEventListener('error', () => {
+                loadingScreen.classList.add('hidden');
+            });
+            video.load();
+        }
+        
+        // Fade In Animation
+        function handleFadeIn() {
+            document.querySelectorAll('.fade-in').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight * 0.85) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+        
+        // Q&A Toggle
+        document.querySelectorAll('.qa-question').forEach(q => {
+            q.addEventListener('click', () => {
+                q.parentElement.classList.toggle('open');
+            });
+        });
+        
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('scroll', handleFadeIn, { passive: true });
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            initVideo();
+            handleScroll();
+            handleFadeIn();
+        });
+        
+        setTimeout(() => {
+            if (!videoReady) {
+                loadingScreen.classList.add('hidden');
+                videoReady = true;
+                videoDuration = 5;
+                requestAnimationFrame(renderLoop);
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
