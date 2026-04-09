@@ -1,0 +1,177 @@
+KEY	ja	zh-TW	ms	fil
+meta_title	ベベスワン エタニティ — ひとりでもできるベスト型抱っこ紐	貝貝天鵝 ETERNITY — 一個人也能使用的背心式揹帶	BEBESWAN ETERNITY — gendong bayi bentuk rompi yang mudah digunakan seorang diri	BEBESWAN ETERNITY — baby carrier bentuk vest na madaling gamitin mag-isa
+meta_desc	ベスト型で着脱が2ステップ。ブースターシートやチャイルドシート連携まで。ベベスワン エタニティ。	背心式設計，兩步驟穿脫；可變身增高座並搭配汽座。貝貝天鵝 ETERNITY。	RENTASAN rompi: pakai & lepas 2 langkah, tukar ke booster dan kerusi kereta. BEBESWAN ETERNITY.	Vest na carrier: 2 hakbang suot/tanggal, maaaring maging booster at magkasama sa car seat. BEBESWAN ETERNITY.
+lang_label	言語を選択	選擇語言	Pilih bahasa	Pumili ng wika
+lang_select_aria	言語を選択	選擇語言	Pilih bahasa	Pumili ng wika
+float_aside_aria	エタニティを購入	購買 ETERNITY	Beli ETERNITY	Bumili ng ETERNITY
+float_buy	購入する	立即購買	Beli	Bumili na
+float_img_alt	エターナルベージュ エタニティ	Eternal Beige ETERNITY	Eternal Beige ETERNITY	Eternal Beige ETERNITY
+hero_img_alt	ベベスワン エタニティ ランディング画像	貝貝天鵝 ETERNITY 形象圖	Gambar pendaratan BEBESWAN ETERNITY	Larawan ng landing BEBESWAN ETERNITY
+hero_subtitle	とてもシンプルだから、<br>ひとりでもすべてできます	因為太簡單，<br>一個人也能全部搞定	Kerana terlalu mudah,<br>anda boleh lakukan semuanya seorang diri	Dahil napakadali,<br>kaya mong gawin lahat mag-isa
+s01_title	とてもシンプルだから、ひとりでもすべてできます。	因為太簡單，一個人也能全部搞定。	Kerana terlalu mudah, anda boleh lakukan semuanya seorang diri.	Dahil napakadali, kaya mong gawin lahat mag-isa.
+s01_body	誰の手も借りず、すぐに準備完了。直感的なデザインで赤ちゃんに心地よい抱っこを、あなたは<strong>両手を自由に</strong>して皿洗い、洗濯物たたみ、一日を回せます。	無須他人協助，轉眼就緒。直觀設計讓寶寶舒適貼身，您可<strong>雙手自由</strong>洗碗、摺衣、安排一整天。	Tanpa bantuan, siap sekejap. Reka bentuk intuitif memberi pelukan selesa pada bayi; anda <strong>bebas menggunakan tangan</strong> untuk basuh pinggan, lipat kain, urus hari.	Walang tulong, handang agad. Intuitibong disenyo para komportable ang yakap; <strong>malaya ang iyong mga kamay</strong> sa hugas, tiklop, buong araw.
+s02_title	着けて外すのは、たった2ステップです。	穿上與取下，只要兩步驟。	Pakai & tanggal hanya 2 langkah.	Suot at tanggal, dalawang hakbang lang.
+s02_wear	装着	穿上	Pakai	Suot
+s02_w1	ベストを着ます。	穿上背心。	Pakai rompi.	Suotin ang vest.
+s02_w2	赤ちゃんを入れてファスナーを上げます。<strong>完了。</strong>	將寶寶放入並拉上拉鍊。<strong>完成。</strong>	Masukkan bayi dan zip ke atas.<strong>Selesai.</strong>	Ilagay ang sanggol at i-zip pataas.<strong>Tapos na.</strong>
+s02_remove	外す	取下	Tanggal	Tanggalin
+s02_r1	ファスナーを下げます。	拉下拉鍊。	Turunkan zip.	Babaan ang zipper.
+s02_r2	赤ちゃんを抱き上げます。<strong>完了。</strong>	抱起寶寶。<strong>完成。</strong>	Angkat bayi.<strong>Selesai.</strong>	Buhatin ang sanggol.<strong>Tapos na.</strong>
+s02_note	複雑なバックルもありません。紛らわしいストラップもありません。<br>ただ<strong>かんたんな手軽さ</strong>です。	沒有複雜扣環，也沒有令人困惑的背帶。<br>只有<strong>簡單輕便</strong>。	Tiada gesper rumit, tiada tali memeningkan.<br>Hanya <strong>kemudahan ringkas</strong>.	Walang kumplikadong buckle, walang nakakalitong strap.<br><strong>Simple at mabilis lang.</strong>
+s03_title	あなたの食卓は<br>いつでも準備万端。	你的餐桌<br>隨時就緒。	Meja anda <br>sentiasa sedia.	Ang inyong mesa <br>laging handa.
+s03_body	カフェ、レストラン、友だちの家でも？ベベスワン エタニティは<strong>普通の椅子をすぐに安全で頑丈なブースターに変身</strong>させます。かさばる機材は家に置いて、旅の心配を減らしましょう。	在咖啡館、餐廳或朋友家？BEBESWAN ETERNITY 能將<strong>一般椅子立刻變成安全穩固的增高座</strong>。把笨重器材留在家，減少旅途煩惱。	Di kafe, restoran atau rumah rakan? BEBESWAN ETERNITY <strong>menukar kerusi biasa kepada booster selamat & kukuh</strong>. Biar peralatan besar di rumah, kurangkan risau perjalanan.	Sa cafe, resto, o bahay ng kaibigan? Ang BEBESWAN ETERNITY ay <strong>ginagawang booster ang ordinaryong upuan</strong>. Iwan ang malaking gamit sa bahay, bawas alala sa biyahe.
+s04_title	抱っこのまま<br>運転までワンストップ。	寶寶還在揹帶上，<br>開車也一次搞定。	Dari gendong ke memandu <br>tanpa henti.	Mula suot hanggang drive <br>isang bagsakan lang.
+s04_body	キャリアごと脱がせる必要はありません。<strong>赤ちゃんを持ち上げてチャイルドシートに座らせるだけ</strong>。ベストは着たままなので、すぐ出発できます。	不必整件脱下，<strong>只要抱起寶寶坐上汽座</strong>即可。背心仍穿在身上，立刻就能出發。	Tiada perlu tanggal semua. <strong>Angkat bayi ke kerusi kereta sahaja.</strong> Rompi kekal dipakai, terus jalan.	Hindi kailangan tanggalin lahat. <strong>Ilipat ang sanggol sa car seat.</strong> Naka-vest ka pa rin, handa agad.
+s05_title	やっと寝かしつけた？<br>もう縛られません。	終於把寶寶哄睡了？<br>您不再被綁住。	Akhirnya tidur?<br>Anda tidak lagi terikat.	Sa wakas natulog?<br>Hindi ka na nakatali.
+s05_body	寝たあとトイレ？ウエストベルトを外さずに<strong>ベスト内で赤ちゃんを安全に固定</strong>。起こさず、ほんのひとときの余裕を。	哄睡後想上廁所？無需解開腰帶，<strong>在背心內安全固定寶寶</strong>，降低吵醒風險，給您片刻喘息。	Selepas tidur perlu tandas? <strong>Pegang bayi selamat dalam rompi tanpa buka tali pinggang</strong>, kurangkan risiko bangunkan.	Pagkatapos matulog, CR? <strong>Ligtas na naka-secure ang sanggol sa vest nang hindi tinatanggal ang waist belt</strong> — bawas gising.
+s06_title	眠った赤ちゃんを起こさずに移動。<br>できます。	讓睡著的寶寶<br>不醒就能交接。	Pindahkan bayi tidur <br>tanpa bangunkan.	Ilipat ang natutulog na sanggol <br>nang hindi ginigising.
+s06_body	デザインが可能にした<strong>究極のペアレンティング連携</strong>。背面ファスナーを下ろし、まだキャリアの中で快適な赤ちゃんをパートナーへ。静かでスムーズに。	設計帶來<strong>理想的親子協力</strong>：打開背面拉鍊，把仍在揹帶中舒適的寶寶交給伴侶——安靜順暢。	<strong>Kolaborasi ibu bapa terbaik</strong>: buka zip belakang, hantar bayi yang masih selesa dalam gendongan kepada pasangan — senyap & lancar.	<strong>Ultimate teamwork</strong>: buksan ang likod na zipper, ilipat ang komportableng sanggol sa kapareha — tahimik at maayos.
+s07_title	赤ちゃんのリズムに合わせた授乳。<br>手間いらず。	配合寶寶的節奏餵奶。<br>毫不費力。	Susu mengikut jadwal mereka <br>tanpa ribet.	Pagpapakain ayon sa oras nila <br>walang abala.
+s07_body	分解したり個室を探したり不要。<strong>ファスナーを下げるだけで、どこでもすぐ授乳</strong>ができます。	不必拆解或找隱密空間。<strong>只要拉下拉鍊，隨處都能立刻哺乳</strong>。	Tiada perlu buka-buka atau cari bilik. <strong>Turunkan zip, susu di mana-mana serta-merta.</strong>	Walang kailangang baklas o hanap ng pribadong lugar. <strong>Babaan ang zipper, agad na pagpapadede kahit saan.</strong>
+s08_title	あなたのスタイルに合う<br>カラーを選びましょう。	選擇符合您風格的<br>顏色。	Pilih warna yang <br>sesuai gaya anda.	Pumili ng kulay na <br>angkop sa estilo mo.
+s08_body	ベベスワン エタニティは4色のプレミアムカラーで<br>どんなスタイルにもなじみます。	BEBESWAN ETERNITY 以四種精品色<br>自然融入各種風格。	BEBESWAN ETERNITY dalam 4 warna premium<br>sesuai pelbagai gaya.	Ang BEBESWAN ETERNITY sa 4 premium na kulay<br>bagay sa anumang estilo.
+c_desc1	明るく感動的なデザイン	明亮感性的設計	Reka bentuk cerah & berjiwa	Disenyong maliwanag at may damdamin
+c_desc2	深みのあるプレミアムトーン	有深度的進階色調	Nada premium berkedalaman	Tono ng premium na may lalim
+c_desc3	シックなモダンスタイル	俐落的現代風	Gaya moden chic	Modernong chic na estilo
+c_desc4	洗練されたアーバングレー	精緩都市灰	Kelabu bandar anggun	Urban gray na refined
+pr_badge1	科学的検証	科學驗證	Pengesahan saintifik	Siyentipikong patunay
+pr_badge2	公的認証	官方認證	Pengiktirafan rasmi	Opisyal na sertipikasyon
+pr_title	圧力分散で証明された<br>優れた設計	以壓力分散證明的<br>卓越設計	Reka bentuk unggul <br>dibuktikan taburan tekanan	Mahusay na disenyo <br>na napapatunayang pamamahagi ng presyon
+pr_sub	公的試験機関による精密な圧力測定で、ベベスワン エタニティ（ベスト型）の優れた荷重分散性能が立証されました。	經公證機構精密壓力測試，已驗證貝貝天鵝 ETERNITY（背心型）優異的荷重分散表現。	Ujian tekanan oleh institusi bertauliah membuktikan taburan beban unggul BEBESWAN ETERNITY (jenis rompi).	Precision pressure testing ng accredited body ay nagpapatunay sa superior na weight distribution ng BEBESWAN ETERNITY (vest type).
+pr_table_title	装着時 身体各部位の圧力負担比較	穿著時身體各部位壓力負擔比較	Perbandingan tekanan mengikut bahagian tubuh semasa dipakai	Paghahambing ng pressure sa bahagi ng katawan habang suot
+tbl_pos	部位	部位	Bahagian	Bahagi
+tbl_h1	H型<br>（一般）	H型<br>（一般）	Jenis H<br>(standard)	H-type<br>(standard)
+tbl_h2	H型<br>（ヒップシート）	H型<br>（腰凳型）	Jenis H<br>(hip seat)	H-type<br>(hip seat)
+tbl_v5	ベスト型<br>（V5）	背心型<br>（V5）	Jenis rompi<br>(V5)	Vest type<br>(V5)
+tbl_et	ベスト型<br>（エタニティ）	背心型<br>（ETERNITY）	Jenis rompi<br>(ETERNITY)	Vest type<br>(ETERNITY)
+tbl_back	背面	背面	Belakang	Likod
+tbl_front	正面	正面	Hadapan	Harap
+tbl_sum	結論	結論	Kesimpulan	Konklusyon
+tbl_c1	肩<br>負担大	肩<br>負擔高	Bahu<br>beban tinggi	Balikat<br>mataas na load
+tbl_c2	腰・骨盤<br>負担大	腰・骨盆<br>負擔高	Pinggul<br>beban tinggi	Baywang/pelvis<br>mataas na load
+tbl_c3	全体<br>良好	整體<br>良好	Keseluruhan<br>baik	Kabuuhan<br>maayos
+tbl_c4	全体<br>非常に良好	整體<br>非常良好	Keseluruhan<br>sangat baik	Kabuuhan<br>napakahusay
+leg_title	負担強度：	負擔強度：	Keamatan beban:	Lakas ng load:
+leg_l	弱	弱	Lemah	Mahina
+leg_m	中	中	Sederhana	Katamtaman
+leg_h	強	強	Kuat	Malakas
+leg_x	最強	最強	Terkuat	Pinakamalakas
+why_pr	なぜ圧力分散が重要？	為什麼壓力分散很重要？	Mengapa taburan tekanan penting?	Bakit mahalaga ang pressure distribution?
+why1t	赤ちゃんの快適さ	寶寶舒適度	Keselesaan bayi	Kaluwagan ng sanggol
+why1d	低い圧力は赤ちゃんの身体への負担を減らします。	較低的壓力減少對寶寶身體的負擔。	Tekanan rendah kurangkan beban pada tubuh bayi.	Mababang presyon, mas kaunting bigat sa katawan ng sanggol.
+why2t	保護者の肩への負担軽減	減輕照護者肩部負擔	Kurangkan beban bahu penjaga	Gaangin ang bigat sa balikat ng magulang
+why2d	均等な分散で負担を最小化。	均勻分散可將負擔降到最低。	Taburan sekata meminimumkan beban.	Pantay na pamamahagi, pinakamababang bigat.
+why3t	長時間の使用も	長時間使用也舒適	Penggunaan lama turut selesa	Mainam din sa matagalang paggamit
+why3d	圧力が低いほど疲れにくい。	壓力越低越不容易累。	Tekanan rendah, kurang letih.	Kapag mas mababa ang presyon, mas kaunting pagod.
+why4t	科学的検証	科學驗證	Pengesahan saintifik	Siyentipikong beripikasyon
+why4d	公的機関の精密測定で実証。	經公認機構精密量測實證。	Dibuktikan ukuran tepat badan bertauliah.	Napatunayang precision measurement ng accredited body.
+cert_title	特許と認証	專利與認證	Paten & pensijilan	Paten at sertipikasyon
+cert_sub	世界が認めたベベスワンの技術力と安全性	全球認可貝貝天鵝的技術實力與安全性。	Dunia mengiktiraf teknologi & keselamatan BEBESWAN.	Kinikilala ng mundo ang teknolohiya at kaligtasan ng BEBESWAN.
+aw_title	受賞歴	得獎紀錄	Anugerah	Gantimpala
+aw1t	女性発明品博覧会 金賞	女性發明品博覽會 金獎	Emas Ekspo Penemu Wanita	Gold sa Women Inventors Expo
+aw1e	女性発明博覧会で金賞受賞	榮獲女性發明博覽會金獎	Menerima emas di Ekspo Penemu Wanita	Gold Prize at the Women Inventors Expo
+aw2t	女性家族部長官賞	女性家族部部長獎	Anugerah Menteri Kesetaraan Gender & Keluarga	Minister of Gender Equality and Family Award
+aw2e	女性家族部長官賞受賞	女性家族部部長獎	Menerima anugerah menteri	Minister award recipient
+pat_title	特許登録	專利登記	Pendaftaran paten	Pagpaparehistro ng patente
+des_t	意匠特許登録	設計專利登記	Pendaftaran paten reka bentuk	Design patent registration
+des_e	Design Patent Registration	Design Patent Registration	Design Patent Registration	Design Patent Registration
+des_d	登録番号：第30-1086989号<br>登録日：2020年12月9日	登錄編號：第30-1086989號<br>登錄日：2020年12月9日	No. pendaftaran: 30-1086989<br>Tarikh: 9 Dis 2020	Reh. no. 30-1086989<br>Petsa: 9 Dis 2020
+tech_t	技術特許登録	技術專利登記	Paten teknologi	Technology patent
+tech_e	Technology Patent Registration	Technology Patent Registration	Technology Patent Registration	Technology Patent Registration
+tech_d	特許番号：第10-2684472号<br>登録日：2024年7月9日	專利號：第10-2684472號<br>登錄日：2024年7月9日	No. paten: 10-2684472<br>9 Jul 2024	Patent no. 10-2684472<br>Hul 9, 2024
+safe_title	安全認証	安全認證	Pensijilan keselamatan	Sertipikasyon sa kaligtasan
+ihdi_t	国際股関節協会認証	國際髖關節協會認證	Pengiktirafan IHDI	IHDI certification
+ihdi_e	IHDI「ヒップヘルシー」認定	IHDI「髖部健康」認證	IHDI "Hip-Healthy"	IHDI "Hip-Healthy"
+ihdi_q	IHDIは、正しい使い方であればベベスワン ベスト型抱っこ紐を<strong style="color: #22c55e;">「ヒップヘルシー」</strong>製品と認めます。	IHDI 認可在正確使用下，貝貝天鵝背心式揹帶為<strong style="color: #22c55e;">髖部健康</strong>產品。	IHDI mengiktiraf pembawa bayi rompi BEBESWAN sebagai produk <strong style="color: #22c55e;">hip-healthy</strong> jika digunakan betul.	Kinikilala ng IHDI ang BEBESWAN vest carrier bilang <strong style="color: #22c55e;">hip-healthy</strong> kapag tamang gamit.
+ihdi_src	— 国際股関節協会（IHDI）、2020	— 國際髖關節協會（IHDI），2020	— IHDI, 2020	— IHDI, 2020
+kc_t	韓国KC安全認証	韓國KC安全認證	Pensijilan keselamatan KC Korea	KC Korea safety mark
+kc_e	Korea Certification（KC）安全マーク	韓國 KC 安全標章	Tanda keselamatan KC Korea	Korea Certification (KC) Safety Mark
+kc_p	韓国産業通商資源部 国家技術標準院の<strong style="color: #3b82f6;">KC安全マーク</strong>を取得し、製品の安全性を公式に認証しました。	取得韓國產業通商資源部國家技術標準院的<strong style="color: #3b82f6;">KC安全標章</strong>，正式認證產品安全性。	Mendapat <strong style="color: #3b82f6;">tanda KC</strong> daripada Institut Piawaian Teknologi Kebangsaan Korea, mengesahkan keselamatan produk.	Nakakuha ng <strong style="color: #3b82f6;">KC safety mark</strong> mula sa KATS, opisyal na kinikilala ang kaligtasan ng produkto.
+kc_src	— 国家技術標準院（KATS）	— 國家技術標準院（KATS）	— KATS	— KATS
+hist_title	企業沿革	企業沿革	Sejarah syarikat	Kasaysayan ng kumpanya
+hist_sub	ベベスワンの革新の歩みとベスト型抱っこ紐の進化	貝貝天鵝的創新旅程與背心式揹帶演進	Perjalanan inovasi BEBESWAN & evolusi gendong rompi	Paglalakbay ng inobasyon ng BEBESWAN at ebolusyon ng vest carrier
+hist_2019	2019年9月設立	2019年9月成立	Ditubuhkan September 2019	Itinatag Setyembre 2019
+hist_20a	世界初のベスト型抱っこ紐発売	全球首創背心式揹帶上市	Pelancaran pertama gendong rompi dunia	Unang vest carrier sa mundo
+hist_20b	女性発明品博覧会 金賞	女性發明品博覽會 金獎	Emas Ekspo Penemu Wanita	Gold Women Inventors Expo
+hist_20c	女性家族部長官賞	女性家族部部長獎	Anugerah Menteri Keluarga	Minister of Family award
+hist_24a	韓国消費者ベストブランド大賞	韓國消費者最佳品牌大獎	Anugerah Jenama Terbaik Pengguna Korea	Korea Consumer Best Brand
+hist_24b	日本輸出開始	開始出口日本	Mula eksport ke Jepun	Simula ng export sa Japan
+hist_24c	Korea Brand Award 1位	Korea Brand Award 第1名	Korea Brand Award No.1	Korea Brand Award No.1
+hist_25a	KCBI韓国消費者大賞	韓國消費者大獎（KCBI）	Anugerah Pengguna Korea KCBI	KCBI Korea Consumer Award
+hist_25b	（株）ベベスワン設立	貝貝天鵝股份有限公司成立	Penubuhan BEBESWAN Co., Ltd.	Pagtatatag ng BEBESWAN Inc.
+hist_26a	米国市場進出契約締結	美國市場進入合約確定	Kontrak masuk pasaran AS	Kasunduan sa US market entry
+hist_26b	プレミアム新製品「エタニティ」発売	高階新品「ETERNITY」上市	Pelancaran premium "ETERNITY"	Paglulunsad ng premium na "ETERNITY"
+lineup_title	ベスト型抱っこ紐ラインナップ	背心式揹帶產品線	Susunan gendong rompi	Linup ng vest carrier
+lineup_quote	「ママと赤ちゃんのためにだけ」<br>ベベスワンの研究所は今も研究を続けます	「只為媽媽與寶寶」<br>貝貝天鵝研發中心持續研究	"Hanya untuk ibu & bayi"<br>makmal BEBESWAN terus meneliti	"Para lang sa ina at sanggol"<br>patuloy ang pananaliksik ng BEBESWAN
+lineup_img_alt	ベスト型ラインナップ年表	背心型產品線年表	Garis masa linup rompi	Timeline ng lineup ng vest
+qa_sn	よくある質問	常見問答	Soalan lazim	Q&A
+qa_title	よくある質問	常見問題	Soalan kerap	Madalas itanong
+qa_intro	ベベスワン エタニティについて<br>お客様からよく寄せられる質問をまとめました。	關於貝貝天鵝 ETERNITY，<br>整理顧客最常詢問的問題。	Soalan lazim tentang BEBESWAN ETERNITY.	Mga tanong tungkol sa BEBESWAN ETERNITY.
+qcat1	1. 対象年齢・サイズ	1. 適用對象與尺寸	1. Umur & saiz	1. Edad at sukat
+qcat2	2. 装着感・健康	2. 穿戴感與健康	2. Keselesaan & kesihatan	2. Komport at kalusugan
+qcat3	3. 機能・使い方	3. 功能與使用	3. Fungsi & penggunaan	3. Function at paggamit
+qcat4	4. 素材・安全性	4. 材質與安全	4. Bahan & keselamatan	4. Materyales at kaligtasan
+qcat5	5. 洗濯・お手入れ	5. 洗滌與保養	5. Basuh & penjagaan	5. Labada at alaga
+q1	Q: 何ヶ月から使えますか？	Q: 幾個月大可以使用？	B: Dari bulan berapa?	T: Mula anong buwan?
+a1	<strong>A:</strong> 新生児（0ヶ月）から<strong>36ヶ月（体重15kg未満）</strong>まで。	<strong>A:</strong> 新生兒（0個月）至<strong>36個月（體重15kg以下）</strong>。	<strong>A:</strong> newborn hingga <strong>36 bulan (&lt;15kg)</strong>.	<strong>A:</strong> newborn hanggang <strong>36 buwan (&lt;15kg)</strong>.
+q2	Q: 体格の大きいパパや祖父母も使えますか？	Q: 體型較大的爸爸或祖父母也能用嗎？	B: Bapa atau datuk besar boleh?	T: Puwede ba ang malaking tatay o lolo/lola?
+a2	<strong>A:</strong> はい。エタニティはサイズ制限をなくし、胸囲・ウエスト最大約160cmまで調整可能。装着者体重43〜100kg、身長155〜190cmを目安に広くご利用いただけます。	<strong>A:</strong> 可以。ETERNITY 放寬尺寸，胸圍與腰圍最大約可調至160cm；建議穿著者體重43–100kg、身高155–190cm。	<strong>A:</strong> Ya. Dada/pinggang max ~160cm; berat 43–100kg, tinggi 155–190cm disyorkan.	<strong>A:</strong> Oo. Hanggang ~160cm dibdib/baywang; inirerekomenda 43–100kg, 155–190cm taas.
+q3	Q: 長時間つけても肩・腰は本当に楽？	Q: 長時間背負真的不會肩腰痠？	B: Bahu/pinggang tak sakit lama-lama?	T: Hindi ba masakit sa balikat/baywang nang matagal?
+a3	<strong>A:</strong> 通常の抱っこ紐と異なり<strong>ベスト型</strong>で荷重を一点に集めず<strong>背中全体に分散</strong>。公的試験で優れた分散が実証。自然な姿勢を保ち痛みを抑えます。	<strong>A:</strong> 與一般揹帶不同，<strong>背心式</strong>將重量<strong>分散於整片背部</strong>而非單點；公證壓力測試已驗證。有助維持姿勢、減輕不適。	<strong>A:</strong> Berbeza: <strong>rompi</strong> agih beban ke <strong>seluruh belakang</strong>; ujian bertauliah membuktikan.	<strong>A:</strong> Iba ang <strong>vest</strong>: ipinapantay ang bigat sa <strong>buong likod</strong>; napatunayang test.
+q4	Q: ひとりでも簡単に着けられますか？	Q: 一個人也能輕鬆穿上嗎？	B: Boleh pakai sendiri?	T: Kaya bang isuot mag-isa?
+a4	<strong>A:</strong> はい。背中で止める複雑なバックルはありません。ベストのように着て<strong>前面ファスナーを上げるだけ</strong>。約<strong>5秒</strong>で装着可能です。	<strong>A:</strong> 是。無需在背後摸索的複雜扣具；像穿背心一樣，<strong>拉起正面拉鍊即可</strong>，約<strong>5秒</strong>完成。	<strong>A:</strong> Ya. Tiada buckle rumit di belakang; pakai macam rompi, <strong>zip depan sahaja</strong>, ~<strong>5 saat</strong>.	<strong>A:</strong> Oo. Walang komplikadong buckle sa likod; parang vest, <strong>harap na zipper lang</strong>, ~<strong>5 segundo</strong>.
+q5	Q: つけたまま授乳できますか？	Q: 揹著也能哺乳嗎？	B: Boleh menyusu sambil gendong?	T: Puwedeng magpadede habang naka-carrier?
+a5	<strong>A:</strong> はい。脱がずに内側のステイロックファスナーを下げたり肩バックルを調整し、対面のまま<strong>母乳・ミルク</strong>がしやすいです。	<strong>A:</strong> 可以。不必脱下，可拉下內側止滑拉鍊或調肩扣，維持對面姿勢方便<strong>母乳或配方奶</strong>。	<strong>A:</strong> Ya. Buka zip dalaman atau laraskan buckle bahu, hadap-hadapan untuk <strong>susu</strong>.	<strong>A:</strong> Oo. Ibaba ang inner zipper o ayusin ang shoulder buckle, harap-harapang <strong>pagpapadede</strong>.
+q6	Q: お出かけでチェア（ブースター）にも？	Q: 外出時也能當兒童椅（增高座）？	B: Jadi booster di luar?	T: Puwedeng booster sa labas?
+a6	<strong>A:</strong> はい。飲食店の<strong>椅子に抱っこ紐を装着して固定</strong>すれば、携帯ブースターとして活躍します。	<strong>A:</strong> 可以。將揹帶<strong>套在一般椅子上並固定</strong>，即可作為便攜增高座。	<strong>A:</strong> Ya. <strong>Pakai pada kerusi biasa & kunci</strong> sebagai booster mudah alih.	<strong>A:</strong> Oo. <strong>Isuot sa ordinaryong upuan at i-secure</strong> bilang portable booster.
+q7	Q: 寝ている赤ちゃんを起こさず寝かせられますか？	Q: 能讓睡著的寶寶不醒就放下嗎？	B: Letak bayi tidur tanpa bangun?	T: Maaaring ilapag ang tulog na sanggol nang hindi gigising?
+a7	<strong>A:</strong> ベルクロの代わりに<strong>静音ジッパー</strong>。背中の<strong>バックジッパー</strong>を開け、玉ねぎの皮のように静かに降ろせます。	<strong>A:</strong> 使用<strong>靜音拉鍊</strong>取代大聲魔鬼氈；打開背部<strong>拉鍊</strong>可安靜卸下，減少吵醒。	<strong>A:</strong> <strong>Zip senyap</strong> mengganti velcro; buka <strong>zip belakang</strong> untuk turunkan perlahan.	<strong>A:</strong> <strong>Tahimik na zipper</strong> imbes na velcro; buksan ang <strong>likod na zipper</strong> para dahan-dahang babaan.
+q8	Q: チャイルドシートのたびに毎回外す必要は？	Q: 每次上汽座都要整件脱下嗎？	B: Perlu tanggal setiap kali kerusi kereta?	T: Kailangan bang tanggalin tuwing car seat?
+a8	<strong>A:</strong> 全体を脱がず<strong>赤ちゃんだけ抱えて乗せればOK</strong>。保護者はベストを着たまま運転へ。	<strong>A:</strong> 不必整件脱下，<strong>只抱寶寶坐上汽座</strong>即可；照護者可繼續穿著背心開車。	<strong>A:</strong> Tidak perlu tanggal semua; <strong>angkat bayi ke kerusi</strong>. Ibu bapa kekal pakai rompi.	<strong>A:</strong> Hindi kailangan tanggalin lahat; <strong>buhatin ang sanggol papunta sa upuan</strong>. Mananatiling naka-vest ang magulang.
+q9	Q: 夏は暑すぎませんか？	Q: 夏天會不會太熱？	B: Panas sangat musim panas?	T: Mainit ba sa tag-init?
+a9	<strong>A:</strong> 通気性の高い<strong>エアメッシュ</strong>。親子の間に<strong>エアシールド（メッシュ）</strong>で蒸れを軽減。専用ポケットに<strong>保冷剤</strong>も入れられます。	<strong>A:</strong> 透氣<strong>空氣網布</strong>；親子間有<strong>透氣網層</strong>減少悶熱；專用口袋可放<strong>冰袋</strong>。	<strong>A:</strong> <strong>Airmesh</strong> bernafas; <strong>lapisan mesh</strong> antara ibu & bayi; poket untuk <strong>ais pek</strong>.	<strong>A:</strong> <strong>Air mesh</strong> na breathable; <strong>mesh layer</strong> sa pagitan; pocket para sa <strong>ice pack</strong>.
+q10	Q: 安全認証はありますか？	Q: 有安全認證嗎？	B: Ada pensijilan?	T: May safety certification ba?
+a10	<strong>A:</strong> 韓国<strong>KC</strong>に加え、米<strong>CPSIA</strong>・<strong>ASTM</strong>、欧州<strong>CE</strong>を取得。<strong>IHDI</strong>の股関節配慮認証も完了しています。	<strong>A:</strong> 除韓國<strong>KC</strong>外，亦具美國<strong>CPSIA</strong>、<strong>ASTM</strong>與歐盟<strong>CE</strong>；並完成<strong>IHDI</strong>髖關節健康相關認證。	<strong>A:</strong> <strong>KC</strong> Korea, <strong>CPSIA</strong>, <strong>ASTM</strong> US, <strong>CE</strong> EU, serta <strong>IHDI</strong>.	<strong>A:</strong> <strong>KC</strong> Korea, US <strong>CPSIA</strong>/<strong>ASTM</strong>, EU <strong>CE</strong>, at <strong>IHDI</strong>.
+q11	Q: 洗濯機は使えますか？	Q: 可以用洗衣機嗎？	B: Boleh mesin basuh?	T: Puwedeng washing machine?
+a11	<strong>A:</strong> 冷水・中性洗剤、<strong>洗濯ネットに入れウールコースで単独洗い</strong>推奨。ファスナー・バックルは閉じた状態で。<strong>乾燥機は厳禁</strong>、日陰干し。	<strong>A:</strong> 建議冷水中性洗劑、<strong>洗衣袋單獨柔洗（羊毛模式）</strong>；拉鍊與扣具請扣好。<strong>禁止烘乾</strong>，陰乾。	<strong>A:</strong> Air sejuk, detergen neutral, <strong>dalam beg basuh, kursus wool solo</strong>. Zip/buckle tertutup. <strong>Jangan dryer</strong>, kering angin.	<strong>A:</strong> Malamig na tubig, neutral soap, <strong>sa laundry bag, wool cycle solo</strong>. Isara zipper/buckle. <strong>Bawal dryer</strong>, paypayin sa lilim.
+q12	Q: 無償A/S期間は？	Q: 免費售後期間多久？	B: Tempoh jaminan percuma?	T: Gaano katagal ang libreng warranty?
+a12	<strong>A:</strong> 購入日から<strong>1年間の品質保証</strong>。製造上の不具合は無償対応。	<strong>A:</strong> 自購買日起<strong>一年品質保固</strong>；製造瑕疵免費處理。	<strong>A:</strong> <strong>1 tahun jaminan</strong> dari tarikh beli; kerosakan kilang dibaiki percuma.	<strong>A:</strong> <strong>1 taon na warranty</strong> mula sa pagbili; libreng ayos kung depekto sa paggawa.
+tip_label	TIP	TIP	TIP	TIP
+tip_body	抱えるときは下から<strong>手のひらひとつ分ほどファスナーを残して</strong>止めると上げやすく、上げた後もう一度押して<strong>二重ロック</strong>を確認するとより安全です。	抱起時可從下方<strong>預留約一手掌的拉鍊空間</strong>再扣合會更好拉；拉上後再按一次確認<strong>雙重鎖定</strong>更安全。	<strong>Biarkan zip bawah sebesar tapak tangan</strong> sebelum kunci untuk mudah naik; tekan sekali lagi untuk <strong>kunci berganda</strong>.	<strong>Mag-iwan ng isang palad na zipper sa ibaba</strong> bago i-lock para mas madaling itaas; pindutin muli para sa <strong>dobleng lock</strong>.
+camp_sn	信頼	信賴	Kepercayaan	Tiwala
+camp_title	10日間無料トライアル &<br>寄付キャンペーン	10日免費試用 &<br>公益捐贈計畫	Percubaan 10 hari percuma &<br>kempen derma	10 araw libreng trial &<br>donasyon campaign
+camp_sub	製品への自信から、満足を保証しつつ<br>社会的価値を実現する、ベベスワンならではの経営哲学です。	源於對產品的信心，在保障滿意的同時<br>實現社會價值——這是貝貝天鵝獨特的經營哲學。	Dari keyakinan pada produk, jamin kepuasan sambil<br>wujudkan nilai sosial — falsafah unik BEBESWAN.	Mula sa tiwala sa produk, garantiya ng kasiyahan at<br>halaga sa lipunan — pilosopiya ng BEBESWAN.
+camp_c1_title	10日間無料体験と100%返金保証	10日免費體驗與100%退款保證	Percubaan 10 hari & jaminan bayaran balik 100%	10 araw libreng subok at 100% refund guarantee
+camp_c1_lb1	体験サービス	體驗服務	Perkhidmatan percubaan	Serbisyong pagsubok
+camp_c1_p1	ご購入後、自宅で最大<strong>10日間</strong>じっくりお試しいただけます。	購買後可在家最長<strong>10天</strong>充分試用。	Selepas beli, cuba di rumah sehingga <strong>10 hari</strong>.	Pagkatapos bumili, subukan sa bahay hanggang <strong>10 araw</strong>.
+camp_c1_lb2	自由な返品	自由退貨	Pulangan bebas	Libreng pagbabalik
+camp_c1_p2	合わない場合、デザイン・色・機能にご不満の場合も、<strong>10日以内に100%返金</strong>の無料返品を提供します。	若不合身或對設計、顏色、功能不滿意，我們提供<strong>10日內100%退款</strong>的免費退貨服務。	Jika tidak sesuai atau tidak puas dengan reka bentuk/warna/fungsi, kami sediakan pulangan percuma <strong>100% dalam 10 hari</strong>.	Kung hindi bagay o hindi nasiyahan sa disenyo/kulay/function, may <strong>100% refund sa loob ng 10 araw</strong>.
+camp_c1_ht	返品率<br><span>満足への自信</span>	退貨率<br><span>對品質的信心</span>	Kadar pulangan<br><span>keyakinan pada kepuasan</span>	Return rate<br><span>tiwala sa kasiyahan</span>
+camp_c2_title	返品商品の寄付プロセス	退貨商品捐贈流程	Proses derma produk pulang	Proses ng donasyon mula sa returns
+camp_c2_lb1	再販禁止と支援	禁止轉售與援助	Larang jual semula & bantu	Bawal ibenta muli at suporta
+camp_c2_p1	トライアル中に返品された商品は<strong>再販せず</strong>、支援が必要な方へ届けます。	試用期退回的商品<strong>不再販售</strong>，轉交需要協助的家庭。	Produk pulang <strong>tidak dijual semula</strong> — diberi kepada yang memerlukan.	Ang ibinalik na produk ay <strong>hindi ibinebenta muli</strong> — ipinapamahagi sa nangangailangan.
+camp_c2_lb2	資源循環と分かち合い	資源循環與分享	Kitaran sumber & berkongsi	Pag-ikot ng yaman at pagbabahagi
+camp_c2_p2	質の良い返品品を廃棄せず<strong>脆弱層向け支援物資</strong>として活用し、持続的な分かち合いを実践します。	不丟棄優質退貨品；作為<strong>支援弱勢物資</strong>——實踐永續分享。	Tiada buang produk baik; digunakan sebagai <strong>bantuan untuk kumpulan rentan</strong> — kitaran sosial mampan.	Hindi itinatapon ang magandang returns; ginagawang <strong>tulong para sa vulnerable</strong> — sustainable na pagtulong.
+camp_c3_title	主な寄付先・団体	主要受捐單位	Organisasi terima derma	Pangunahing benepisyaryo
+don_home	家庭	家庭	Keluarga	Pamilya
+don_i1	ひとり親家庭	單親家庭	Ibu bapa tunggal	Single-parent
+don_i2	母子・父子家庭	單親育兒家庭	Keluarga ibu/bapa tunggal	Solo parent households
+don_i3	祖父母家庭	祖父母照護家庭	Keluarga datuk nenek	Mga tahanang may lolo at lola
+don_orgn	団体・機関	團體與機構	Organ & institusi	Organisasyon at institusyon
+don_i4	ワールド・ビジョン	世界宣明會	World Vision	World Vision
+don_i5	グッド・ネイバーズ	好鄰居	Good Neighbors	Good Neighbors
+don_i6	ミッションセンター	宣教中心	Pusat misi	Mission center
+don_i7	保育施設	托育機構	Tadika / taska	Daycare
+camp_sum	お客様には<strong>失敗しない買い物</strong>を、企業には<strong>社会的責任</strong>を、困難な環境の親には<strong>育児の負担軽減</strong>を——ベベスワンの中核的な共創モデルです。	為顧客提供<strong>零失敗的購物體驗</strong>，為企業實踐<strong>社會責任</strong>，為身處困境的父母<strong>減輕育兒負擔</strong>——這是貝貝天鵝核心的共創模式。	Untuk pelanggan <strong>pengalaman beli tanpa risau</strong>, untuk syarikat <strong>tanggungjawab sosial</strong>, untuk ibu bapa <strong>kurangkan beban penjagaan</strong> — model win-win teras BEBESWAN.	Sa customer <strong>risk-free na bili</strong>, sa kumpanya <strong>pananagutan sa lipunan</strong>, sa magulang <strong>gaanin ang bigat ng pag-aalaga</strong> — core na win-win ng BEBESWAN.
+cta_title	ひとりでもみんなができる<br>育児の新しい基準	一個人也能完成的<br>育兒新標準	Piawaian baharu penjagaan — <br>semua boleh seorang diri.	Bagong pamantayan sa pag-aalaga — <br>kayang-kaya mag-isa.
+cta_desc	ベベスワン エタニティとともに<br>手は自由に、心は安らかに。	與貝貝天鵝 ETERNITY 同行<br>雙手自由，心境安穩。	Bersama BEBESWAN ETERNITY:<br>tangan bebas, hati tenang.	Kasama ang BEBESWAN ETERNITY:<br>malayang kamay, panatag na loob.
+cta_btn	ETERNITYを見る	了解 ETERNITY	Lihat ETERNITY	Tingnan ang ETERNITY
+footer_desc	ひとりでもみんなができる<br>ベスト型抱っこ紐の新基準	一個人也能搞定的<br>背心式揹帶新標準	Piawaian baharu gendong rompi — <br>semua boleh sendiri.	Bagong pamantayan sa vest carrier — <br>kayang mag-isa.
+foot_sup	サポート	支援	SOKONGAN	SUPORTA
+foot_l1	取扱説明書	使用手冊	Manual	Manwal
+foot_l2	よくある質問	常見問題	Soalan lazim	FAQ
+foot_l3	品質保証	品質保證	Jaminan kualiti	Garantiya ng kalidad
+foot_con	お問い合わせ	聯絡我們	HUBUNGI	MAKIPAG-UGNAYAN
+foot_c1	カスタマーセンター	客服中心	Pusat pelanggan	Customer center
+foot_c2	メールでのお問い合わせ	電郵洽詢	E-mel pertanyaan	Email inquiry
+footer_cr	© 2025 bebeswan. 無断複写・転載を禁じます。	© 2025 bebeswan. 版權所有。	© 2025 bebeswan. Hak cipta terpelihara.	© 2025 bebeswan. All rights reserved.

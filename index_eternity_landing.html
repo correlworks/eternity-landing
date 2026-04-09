@@ -12,10 +12,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>베베스완 이터니티 - 혼자서도 모두 할 수 있는 아기띠</title>
-    <meta name="description" content="베베스완 이터니티는 혼자서도 쉽게 착용하고 뺄 수 있는 조끼형 아기띠입니다. 2단계 착용, 부스터 시트 변환, 카시트 연동까지.">
+    <meta name="description" id="metaDesc" content="베베스완 이터니티는 혼자서도 쉽게 착용하고 뺄 수 있는 조끼형 아기띠입니다. 2단계 착용, 부스터 시트 변환, 카시트 연동까지.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Pretendard:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;600;700&family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
         
@@ -68,42 +68,53 @@
         }
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* Video Container */
-        .video-container {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100vh;
-            z-index: 1;
-            background: var(--ivory);
-            overflow: hidden;
+        /* Hero Main — 정적 메인 이미지 */
+        .hero-main {
+            min-height: 100vh;
             display: flex;
-            align-items: flex-start;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            padding-top: 5vh;
+            padding: 72px 5% 56px;
+            background: linear-gradient(165deg, #FDF8F5 0%, var(--ivory) 42%, #F5EBE4 100%);
+            position: relative;
+            z-index: 1;
         }
-        .video-container video {
-            width: 70%;
-            max-width: 600px;
-            height: auto;
-            max-height: 65vh;
-            object-fit: contain;
-        }
-
-        /* Scroll Content */
-        .scroll-content { position: relative; z-index: 2; pointer-events: none; }
-        .scroll-spacer { height: 500vh; pointer-events: none; }
-
-        /* Hero Section */
-        .hero-section {
-            position: fixed;
-            bottom: 0; left: 0;
+        .hero-main-inner {
+            max-width: 1100px;
             width: 100%;
-            z-index: 10;
-            pointer-events: none;
-            transition: opacity 0.5s ease;
-            padding: 40px 5% 80px;
-            background: linear-gradient(to top, var(--ivory) 0%, rgba(255,255,255,0.98) 40%, rgba(255,255,255,0.85) 70%, rgba(255,255,255,0) 100%);
+            text-align: center;
         }
+        .hero-main-visual {
+            will-change: transform, opacity;
+        }
+        .hero-main-visual img {
+            width: 100%;
+            max-width: 920px;
+            height: auto;
+            border-radius: 24px;
+            box-shadow: 0 28px 72px rgba(92, 64, 51, 0.14);
+            display: block;
+            margin: 0 auto;
+        }
+        .hero-content-static {
+            text-align: center;
+            max-width: 720px;
+            margin: 36px auto 0;
+            pointer-events: auto;
+        }
+        @keyframes heroFadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-animate {
+            opacity: 0;
+            animation: heroFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .hero-animate-delay-1 { animation-delay: 0.12s; }
+        .hero-animate-delay-2 { animation-delay: 0.28s; }
+        .hero-animate-delay-3 { animation-delay: 0.44s; }
+
         .hero-content { text-align: center; max-width: 800px; margin: 0 auto; }
         .hero-brand {
             font-family: 'Playfair Display', serif;
@@ -129,76 +140,166 @@
             line-height: 1.9;
         }
 
-        /* Scroll Indicator */
-        .scroll-indicator {
+        /* 플로팅 구매 패널 (측면 고정) */
+        .floating-purchase {
             position: fixed;
-            bottom: 20px; left: 50%;
-            transform: translateX(-50%);
-            z-index: 25;
+            right: max(16px, calc((100vw - min(100vw, 1400px)) / 2 - 8px));
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 250;
+            width: 168px;
+            padding: 18px 14px 16px;
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 20px;
+            box-shadow: 0 16px 48px rgba(44, 36, 24, 0.14);
+            border: 1px solid rgba(138, 107, 87, 0.12);
             text-align: center;
+            will-change: transform;
+            backdrop-filter: blur(10px);
+        }
+        .floating-purchase-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
             color: var(--warm-brown);
-            transition: opacity 0.5s ease;
+            text-transform: uppercase;
+            margin-bottom: 10px;
         }
-        .scroll-indicator.hidden { opacity: 0; pointer-events: none; }
-        .scroll-text { font-size: 11px; letter-spacing: 3px; margin-bottom: 8px; text-transform: uppercase; }
-        .scroll-arrow {
-            width: 22px; height: 36px;
-            border: 2px solid var(--warm-brown);
-            border-radius: 11px;
-            margin: 0 auto;
-            position: relative;
-            opacity: 0.7;
+        .floating-purchase img {
+            width: 100%;
+            border-radius: 14px;
+            margin-bottom: 12px;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
         }
-        .scroll-arrow::after {
-            content: '';
-            position: absolute;
-            top: 6px; left: 50%;
-            transform: translateX(-50%);
-            width: 4px; height: 6px;
-            background: var(--warm-brown);
-            border-radius: 2px;
-            animation: scrollBounce 1.5s infinite;
+        .floating-purchase-btn {
+            display: block;
+            width: 100%;
+            padding: 12px 12px;
+            background: linear-gradient(135deg, var(--deep-brown) 0%, #4a3329 100%);
+            color: white !important;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            border-radius: 12px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 6px 20px rgba(92, 64, 51, 0.28);
         }
-        @keyframes scrollBounce {
-            0%, 100% { top: 8px; opacity: 1; }
-            50% { top: 20px; opacity: 0.3; }
+        .floating-purchase-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(92, 64, 51, 0.38);
         }
 
-        /* Scroll Messages */
-        .scroll-messages {
+        /* 언어 선택 — 글로브 + 글래스 필 pill */
+        .lang-select-wrap {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100vh;
-            z-index: 15;
-            pointer-events: none;
+            left: max(14px, env(safe-area-inset-left, 0px));
+            top: max(14px, env(safe-area-inset-top, 0px));
+            z-index: 260;
+            filter: drop-shadow(0 10px 28px rgba(44, 36, 24, 0.12));
+        }
+        .lang-select-shell {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            padding: 3px;
+            border-radius: 100px;
+            background: linear-gradient(
+                135deg,
+                rgba(232, 165, 152, 0.55) 0%,
+                rgba(138, 107, 87, 0.35) 48%,
+                rgba(92, 64, 51, 0.25) 100%
+            );
+            box-shadow:
+                0 0 0 1px rgba(255, 255, 255, 0.55) inset,
+                0 1px 2px rgba(92, 64, 51, 0.08);
+        }
+        .lang-select-inner {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 6px 8px 12px;
+            border-radius: 100px;
+            background: rgba(255, 253, 251, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+        }
+        .lang-select-icon {
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        .scroll-message {
-            position: absolute;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            padding: 0 20px;
-            max-width: 800px;
-        }
-        .scroll-message.active { opacity: 1; transform: translateY(0); }
-        .scroll-message h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(24px, 4vw, 40px);
-            font-weight: 600;
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, var(--soft-pink) 0%, rgba(232, 165, 152, 0.45) 100%);
             color: var(--deep-brown);
-            margin-bottom: 16px;
-            line-height: 1.3;
+            box-shadow: 0 2px 8px rgba(138, 107, 87, 0.15);
         }
-        .scroll-message p {
-            font-size: clamp(14px, 2vw, 18px);
-            color: var(--text-light);
-            line-height: 1.8;
+        .lang-select-icon svg {
+            width: 17px;
+            height: 17px;
+            opacity: 0.92;
         }
-        .scroll-message .highlight { color: var(--warm-brown); font-weight: 600; }
+        .lang-select {
+            appearance: none;
+            -webkit-appearance: none;
+            margin: 0;
+            padding: 4px 30px 4px 2px;
+            border: none;
+            border-radius: 0;
+            background: transparent;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235C4033' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 6px center;
+            background-size: 12px;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--deep-brown);
+            cursor: pointer;
+            max-width: min(178px, calc(100vw - 120px));
+            line-height: 1.35;
+        }
+        .lang-select:hover {
+            color: var(--warm-brown);
+        }
+        .lang-select:focus {
+            outline: none;
+        }
+        .lang-select-wrap:focus-within .lang-select-shell {
+            box-shadow:
+                0 0 0 3px rgba(232, 165, 152, 0.45),
+                0 0 0 1px rgba(255, 255, 255, 0.55) inset,
+                0 1px 2px rgba(92, 64, 51, 0.08);
+        }
+        .lang-select-shell:hover .lang-select-inner {
+            background: rgba(255, 255, 255, 0.95);
+        }
+        html[lang="ja"] body {
+            font-family: 'Noto Sans JP', 'Pretendard', -apple-system, sans-serif;
+        }
+        html[lang="zh-TW"] body,
+        html[lang="zh-HK"] body {
+            font-family: 'Noto Sans TC', 'Pretendard', -apple-system, sans-serif;
+        }
+        @media (max-width: 768px) {
+            .lang-select-wrap {
+                left: max(10px, env(safe-area-inset-left, 0px));
+                top: max(10px, env(safe-area-inset-top, 0px));
+            }
+            .lang-select-inner { padding: 6px 4px 6px 10px; gap: 6px; }
+            .lang-select-icon { width: 28px; height: 28px; }
+            .lang-select-icon svg { width: 15px; height: 15px; }
+            .lang-select {
+                font-size: 12px;
+                padding: 2px 28px 2px 0;
+                max-width: min(152px, calc(100vw - 100px));
+            }
+        }
 
         /* Progress Bar */
         .progress-bar {
@@ -778,7 +879,26 @@
                 height: auto;
             }
         }
+        @media (max-width: 900px) {
+            .floating-purchase {
+                right: 10px;
+                width: 132px;
+                padding: 12px 10px;
+            }
+        }
         @media (max-width: 768px) {
+            .floating-purchase {
+                right: 10px;
+                left: auto;
+                top: auto;
+                bottom: 20px;
+                transform: none;
+                width: 118px;
+                padding: 10px 8px;
+            }
+            .floating-purchase-btn { font-size: 12px; padding: 10px 8px; }
+            .hero-main { padding: 56px 5% 40px; min-height: auto; }
+            .hero-main-visual img { border-radius: 16px; }
             .slide-section { padding: 80px 5%; min-height: auto; }
             .slide-number { margin-bottom: -20px; }
             .footer-content {
@@ -802,66 +922,55 @@
         <div class="loading-spinner"></div>
     </div>
 
-    <!-- Progress Bar -->
+    <!-- Progress Bar (페이지 전체 스크롤) -->
     <div class="progress-bar" id="progressBar"></div>
 
-    <!-- Video Container -->
-    <div class="video-container" id="videoContainer">
-        <video id="scrollVideo" muted playsinline preload="auto">
-            <source src="https://fjkgfxfisgxtdvdvcwhc.supabase.co/storage/v1/object/public/360_white/eternity_360_rotation.webm" type="video/webm">
-        </video>
+    <div class="lang-select-wrap">
+        <label for="langSelect" class="visually-hidden"><span data-i18n="lang_label">언어 선택</span></label>
+        <div class="lang-select-shell">
+            <div class="lang-select-inner">
+                <span class="lang-select-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                </span>
+                <select id="langSelect" class="lang-select" aria-label="Language" data-i18n-aria="lang_select_aria" title="Language">
+                    <option value="ko">한국어</option>
+                    <option value="ja">日本語</option>
+                    <option value="zh-TW">繁體中文（台灣）</option>
+                    <option value="zh-HK">繁體中文（香港）</option>
+                    <option value="ms">Bahasa Melayu</option>
+                    <option value="fil">Filipino</option>
+                </select>
+            </div>
+        </div>
     </div>
+    <style>.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }</style>
 
-    <!-- Hero Section -->
-    <div class="hero-section" id="heroSection">
-        <div class="hero-content">
-            <p class="hero-brand">bebeswan</p>
-            <h1 class="hero-title">ETERNITY</h1>
-            <p class="hero-subtitle">
-                너무 간단해서,<br>
-                혼자서도 모두 할 수 있습니다
-            </p>
-        </div>
-    </div>
+    <!-- 플로팅 구매 — 제품 이미지 + 구매 버튼 (항상 접근) -->
+    <aside class="floating-purchase" id="floatPurchaseAside" aria-label="이터니티 구매" data-i18n-aria="float_aside_aria">
+        <p class="floating-purchase-label">ETERNITY</p>
+        <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1770355274765.jpg" alt="에터널 베이지 이터니티" data-i18n-alt="float_img_alt">
+        <a href="https://bebeswan0000.cafe24.com/shop10/surl/O/51" target="_blank" rel="noopener noreferrer" class="floating-purchase-btn" onclick="gtag('event', 'click', {event_category: 'CTA', event_label: '플로팅 구매하기', value: 1});" data-i18n="float_buy">구매하기</a>
+    </aside>
 
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator" id="scrollIndicator">
-        <p class="scroll-text">Scroll to Explore</p>
-        <div class="scroll-arrow"></div>
-    </div>
-
-    <!-- Scroll Messages -->
-    <div class="scroll-messages" id="scrollMessages">
-        <div class="scroll-message" data-start="0.10" data-end="0.22">
-            <h2>2단계 착용</h2>
-            <p>조끼 입고, 지퍼 올리면<br><span class="highlight">끝.</span></p>
+    <!-- Hero Main — 정적 메인 비주얼 -->
+    <header class="hero-main" id="heroMain">
+        <div class="hero-main-inner">
+            <div class="hero-main-visual hero-animate">
+                <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1775715432144.png" alt="베베스완 이터니티 랜딩 이미지" width="920" fetchpriority="high" data-i18n-alt="hero_img_alt">
+            </div>
+            <div class="hero-content hero-content-static">
+                <p class="hero-brand hero-animate hero-animate-delay-1">bebeswan</p>
+                <h1 class="hero-title hero-animate hero-animate-delay-2">ETERNITY</h1>
+                <p class="hero-subtitle hero-animate hero-animate-delay-3" data-i18n="hero_subtitle">
+                    너무 간단해서,<br>
+                    혼자서도 모두 할 수 있습니다
+                </p>
+            </div>
         </div>
-        <div class="scroll-message" data-start="0.26" data-end="0.38">
-            <h2>부스터 시트</h2>
-            <p>의자를 아기 시트로<br>즉시 변환</p>
-        </div>
-        <div class="scroll-message" data-start="0.42" data-end="0.54">
-            <h2>카시트 연동</h2>
-            <p>아기만 들어 올려<br><span class="highlight">바로 출발</span></p>
-        </div>
-        <div class="scroll-message" data-start="0.58" data-end="0.70">
-            <h2>스테이락 수유</h2>
-            <p>지퍼만 내리면<br>어디서든 수유 가능</p>
-        </div>
-        <div class="scroll-message" data-start="0.74" data-end="0.86">
-            <h2>무소음 전달</h2>
-            <p>잠든 아기 깨우지 않고<br><span class="highlight">파트너에게 전달</span></p>
-        </div>
-        <div class="scroll-message" data-start="0.88" data-end="0.98">
-            <h2>손을 자유롭게</h2>
-            <p>설거지, 빨래, 일과 관리<br>모두 가능합니다</p>
-        </div>
-    </div>
-
-    <!-- Scroll Content -->
-    <div class="scroll-content">
-        <div class="scroll-spacer"></div>
-    </div>
+    </header>
 
     <!-- Main Content -->
     <div class="info-section">
@@ -871,8 +980,8 @@
             <div class="slide-content slide-with-image">
                 <div class="slide-text">
                     <div class="slide-number fade-in">01</div>
-                    <h2 class="slide-title fade-in">너무 간단해서, 혼자서도 모두 할 수 있습니다.</h2>
-                    <p class="slide-body fade-in">
+                    <h2 class="slide-title fade-in" data-i18n="s01_title">너무 간단해서, 혼자서도 모두 할 수 있습니다.</h2>
+                    <p class="slide-body fade-in" data-i18n="s01_body">
                         아무 도움 없이도 순식간에 준비 완료. 직관적인 디자인으로 아기에게 편안한 품을 제공하는 동시에, 
                         당신은 <strong>손을 자유롭게</strong> 사용하여 설거지하고, 빨래 개고, 하루 일과를 관리할 수 있습니다.
                     </p>
@@ -888,39 +997,39 @@
             <div class="slide-content slide-with-image">
                 <div class="slide-text">
                     <div class="slide-number fade-in">02</div>
-                    <h2 class="slide-title fade-in">아기를 착용하고 빼는 것이 단 2단계입니다.</h2>
+                    <h2 class="slide-title fade-in" data-i18n="s02_title">아기를 착용하고 빼는 것이 단 2단계입니다.</h2>
                     
                     <div class="steps-container fade-in">
                         <div class="step-group">
-                            <div class="step-label">착용</div>
+                            <div class="step-label" data-i18n="s02_wear">착용</div>
                             <div class="step-list">
                                 <div class="step-item">
                                     <div class="step-number-badge">1</div>
-                                    <div class="step-text">조끼를 입습니다.</div>
+                                    <div class="step-text" data-i18n="s02_w1">조끼를 입습니다.</div>
                                 </div>
                                 <div class="step-item">
                                     <div class="step-number-badge">2</div>
-                                    <div class="step-text">아기를 안에 넣고 지퍼를 올립니다. <strong>끝.</strong></div>
+                                    <div class="step-text" data-i18n="s02_w2">아기를 안에 넣고 지퍼를 올립니다. <strong>끝.</strong></div>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="step-group">
-                            <div class="step-label">빼기</div>
+                            <div class="step-label" data-i18n="s02_remove">빼기</div>
                             <div class="step-list">
                                 <div class="step-item">
                                     <div class="step-number-badge">1</div>
-                                    <div class="step-text">지퍼를 내립니다.</div>
+                                    <div class="step-text" data-i18n="s02_r1">지퍼를 내립니다.</div>
                                 </div>
                                 <div class="step-item">
                                     <div class="step-number-badge">2</div>
-                                    <div class="step-text">아기를 들어 올립니다. <strong>끝.</strong></div>
+                                    <div class="step-text" data-i18n="s02_r2">아기를 들어 올립니다. <strong>끝.</strong></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="slide-note fade-in">
+                    <div class="slide-note fade-in" data-i18n="s02_note">
                         복잡한 버클도 없습니다. 헷갈리는 스트랩도 없습니다.<br>
                         그저 <strong>손쉬운 간편함</strong>입니다.
                     </div>
@@ -936,8 +1045,8 @@
             <div class="slide-content slide-with-image">
                 <div class="slide-text">
                     <div class="slide-number fade-in">03</div>
-                    <h2 class="slide-title fade-in">당신의 식탁은<br>언제나 준비되어 있습니다.</h2>
-                    <p class="slide-body fade-in">
+                    <h2 class="slide-title fade-in" data-i18n="s03_title">당신의 식탁은<br>언제나 준비되어 있습니다.</h2>
+                    <p class="slide-body fade-in" data-i18n="s03_body">
                         카페, 레스토랑, 또는 친구 집 방문 시에도? 베베스완 이터니티는 
                         <strong>일반 의자를 즉시 안전하고 튼튼한 아기 부스터 시트로 변신</strong>시킵니다. 
                         부피가 큰 추가 장비는 집에 두고 여행 걱정을 없애세요.
@@ -954,8 +1063,8 @@
             <div class="slide-content slide-with-image">
                 <div class="slide-text">
                     <div class="slide-number fade-in">04</div>
-                    <h2 class="slide-title fade-in">아기 착용 상태에서<br>운전까지 한 번에.</h2>
-                    <p class="slide-body fade-in">
+                    <h2 class="slide-title fade-in" data-i18n="s04_title">아기 착용 상태에서<br>운전까지 한 번에.</h2>
+                    <p class="slide-body fade-in" data-i18n="s04_body">
                         캐리어 전체를 벗길 필요 없습니다. 그저 <strong>아기를 들어 올려 카시트에 앉히기만</strong> 하면 됩니다. 
                         조끼는 착용한 채로 있으므로 즉시 출발 준비가 완료됩니다.
                     </p>
@@ -971,8 +1080,8 @@
             <div class="slide-content slide-with-image">
                 <div class="slide-text">
                     <div class="slide-number fade-in">05</div>
-                    <h2 class="slide-title fade-in">드디어 아기를 재웠나요?<br>이제 당신은 더 이상 묶여있지 않습니다.</h2>
-                    <p class="slide-body fade-in">
+                    <h2 class="slide-title fade-in" data-i18n="s05_title">드디어 아기를 재웠나요?<br>이제 당신은 더 이상 묶여있지 않습니다.</h2>
+                    <p class="slide-body fade-in" data-i18n="s05_body">
                         아기가 잠든 후 화장실을 사용해야 하나요? 우리 디자인은 <strong>허리 벨트를 풀지 않고도 
                         조끼 안에서 아기를 안전하게 고정</strong>합니다. 깨울 위험 없이 당신에게 잠시의 여유를 제공합니다.
                     </p>
@@ -988,8 +1097,8 @@
             <div class="slide-content slide-with-image">
                 <div class="slide-text">
                     <div class="slide-number fade-in">06</div>
-                    <h2 class="slide-title fade-in">잠든 아기를 깨우지 않고 옮기기.<br>가능합니다.</h2>
-                    <p class="slide-body fade-in">
+                    <h2 class="slide-title fade-in" data-i18n="s06_title">잠든 아기를 깨우지 않고 옮기기.<br>가능합니다.</h2>
+                    <p class="slide-body fade-in" data-i18n="s06_body">
                         디자인이 가능하게 한 <strong>궁극의 부모 팀워크</strong>. 
                         그저 뒷면의 지퍼를 내리고 아기를—여전히 캐리어 안에 편안히 있는—파트너에게 전달하세요. 
                         전달은 조용하고 매끄럽습니다.
@@ -1006,8 +1115,8 @@
             <div class="slide-content slide-with-image">
                 <div class="slide-text">
                     <div class="slide-number fade-in">07</div>
-                    <h2 class="slide-title fade-in">그들의 일정에 맞춘 영양 공급.<br>번거로움 없이.</h2>
-                    <p class="slide-body fade-in">
+                    <h2 class="slide-title fade-in" data-i18n="s07_title">그들의 일정에 맞춘 영양 공급.<br>번거로움 없이.</h2>
+                    <p class="slide-body fade-in" data-i18n="s07_body">
                         캐리어를 분해하거나 사적인 장소를 찾을 필요가 없습니다. 
                         <strong>간단한 지퍼 내리기만으로 어디서든 즉시 모유 수유가 가능</strong>합니다.
                     </p>
@@ -1022,8 +1131,8 @@
         <section class="slide-section dark">
             <div class="slide-content">
                 <div class="slide-number fade-in">08</div>
-                <h2 class="slide-title fade-in">당신의 스타일에 맞는<br>컬러를 선택하세요.</h2>
-                <p class="slide-body fade-in">
+                <h2 class="slide-title fade-in" data-i18n="s08_title">당신의 스타일에 맞는<br>컬러를 선택하세요.</h2>
+                <p class="slide-body fade-in" data-i18n="s08_body">
                     베베스완 이터니티는 4가지 프리미엄 컬러로<br>
                     어떤 스타일에도 자연스럽게 어울립니다.
                 </p>
@@ -1033,28 +1142,28 @@
                             <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1770355274765.jpg" alt="에터널 베이지">
                         </div>
                         <div class="color-name">Eternal Beige</div>
-                        <div class="color-desc">화사한 감성 디자인</div>
+                        <div class="color-desc" data-i18n="c_desc1">화사한 감성 디자인</div>
                     </div>
                     <div class="color-card">
                         <div class="color-image">
                             <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1770355285033.jpg" alt="쉐도우 모카">
                         </div>
                         <div class="color-name">Shadow Mocha</div>
-                        <div class="color-desc">깊이 있는 프리미엄 톤</div>
+                        <div class="color-desc" data-i18n="c_desc2">깊이 있는 프리미엄 톤</div>
                     </div>
                     <div class="color-card">
                         <div class="color-image">
                             <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1770355274769.jpg" alt="카본 블랙">
                         </div>
                         <div class="color-name">Carbon Black</div>
-                        <div class="color-desc">시크한 모던 스타일</div>
+                        <div class="color-desc" data-i18n="c_desc3">시크한 모던 스타일</div>
                     </div>
                     <div class="color-card">
                         <div class="color-image">
                             <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1770355274771.jpg" alt="티타늄 실버">
                         </div>
                         <div class="color-name">Titanium Silver</div>
-                        <div class="color-desc">세련된 어반 그레이</div>
+                        <div class="color-desc" data-i18n="c_desc4">세련된 어반 그레이</div>
                     </div>
                 </div>
             </div>
@@ -1066,14 +1175,14 @@
                 <div style="text-align: center; margin-bottom: 40px;">
                     <div class="slide-number fade-in" style="opacity: 0.15; font-size: 120px; color: var(--warm-brown);">00</div>
                     <div style="display: flex; gap: 12px; justify-content: center; margin-bottom: 24px;" class="fade-in">
-                        <span style="background: var(--deep-brown); color: white; padding: 8px 20px; border-radius: 24px; font-size: 14px; font-weight: 600;">과학적 검증</span>
-                        <span style="background: var(--warm-brown); color: white; padding: 8px 20px; border-radius: 24px; font-size: 14px; font-weight: 600;">공인인증</span>
+                        <span style="background: var(--deep-brown); color: white; padding: 8px 20px; border-radius: 24px; font-size: 14px; font-weight: 600;" data-i18n="pr_badge1">과학적 검증</span>
+                        <span style="background: var(--warm-brown); color: white; padding: 8px 20px; border-radius: 24px; font-size: 14px; font-weight: 600;" data-i18n="pr_badge2">공인인증</span>
                     </div>
-                    <h2 class="slide-title fade-in" style="text-align: center; font-size: 36px; margin-left: auto; margin-right: auto; max-width: 600px;">
+                    <h2 class="slide-title fade-in" style="text-align: center; font-size: 36px; margin-left: auto; margin-right: auto; max-width: 600px;" data-i18n="pr_title">
                         압력 분산의 차이가<br>
                         <span style="color: var(--accent-coral);">착용감의 차이</span>를 만듭니다
                     </h2>
-                    <p class="slide-body fade-in" style="text-align: center; max-width: 600px; margin: 0 auto 40px;">
+                    <p class="slide-body fade-in" style="text-align: center; max-width: 600px; margin: 0 auto 40px;" data-i18n="pr_sub">
                         공인인증기관의 정밀한 압력 시험을 통해 입증된<br>
                         베베스완의 우수한 압력 분산 기술
                     </p>
@@ -1081,23 +1190,23 @@
 
                 <!-- 압력 시험 도면 테이블 -->
                 <div class="fade-in" style="background: white; border-radius: 20px; padding: 32px; margin: 0 auto 40px; max-width: 1100px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
-                    <h3 style="text-align: center; font-size: 22px; font-weight: 800; color: var(--text-dark); margin-bottom: 24px;">
+                    <h3 style="text-align: center; font-size: 22px; font-weight: 800; color: var(--text-dark); margin-bottom: 24px;" data-i18n="pr_table_title">
                         공인인증기관 - 압력 시험 도면
                     </h3>
                     
                     <table style="width: 100%; border-collapse: separate; border-spacing: 0; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
                         <thead>
                             <tr style="background: #5A5A5A; color: white;">
-                                <th style="padding: 14px 10px; font-size: 14px; font-weight: 600; border: 1px solid #4A4A4A; width: 12%;">위치</th>
-                                <th style="padding: 14px 10px; font-size: 14px; font-weight: 600; border: 1px solid #4A4A4A; width: 22%;">H타입<br>(일반형)</th>
-                                <th style="padding: 14px 10px; font-size: 14px; font-weight: 600; border: 1px solid #4A4A4A; width: 22%;">H타입<br>(힙시트형)</th>
-                                <th style="padding: 14px 10px; font-size: 14px; font-weight: 600; border: 1px solid #4A4A4A; width: 22%;">조끼형타입<br>(V5)</th>
-                                <th style="padding: 14px 10px; font-size: 14px; font-weight: 600; border: 1px solid #4A4A4A; width: 22%; background: linear-gradient(135deg, var(--warm-brown) 0%, var(--accent-coral) 100%); color: white;">조끼형타입<br>(이터니티)</th>
+                                <th style="padding: 14px 10px; font-size: 14px; font-weight: 600; border: 1px solid #4A4A4A; width: 12%;" data-i18n="tbl_pos">위치</th>
+                                <th style="padding: 14px 10px; font-size: 14px; font-weight: 600; border: 1px solid #4A4A4A; width: 22%;" data-i18n="tbl_h1">H타입<br>(일반형)</th>
+                                <th style="padding: 14px 10px; font-size: 14px; font-weight: 600; border: 1px solid #4A4A4A; width: 22%;" data-i18n="tbl_h2">H타입<br>(힙시트형)</th>
+                                <th style="padding: 14px 10px; font-size: 14px; font-weight: 600; border: 1px solid #4A4A4A; width: 22%;" data-i18n="tbl_v5">조끼형타입<br>(V5)</th>
+                                <th style="padding: 14px 10px; font-size: 14px; font-weight: 600; border: 1px solid #4A4A4A; width: 22%; background: linear-gradient(135deg, var(--warm-brown) 0%, var(--accent-coral) 100%); color: white;" data-i18n="tbl_et">조끼형타입<br>(이터니티)</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td style="padding: 12px; text-align: center; font-weight: 700; font-size: 14px; background: #F8F8F8; border: 1px solid #E0E0E0;">후면</td>
+                                <td style="padding: 12px; text-align: center; font-weight: 700; font-size: 14px; background: #F8F8F8; border: 1px solid #E0E0E0;" data-i18n="tbl_back">후면</td>
                                 <td style="padding: 10px; text-align: center; border: 1px solid #E0E0E0;">
                                     <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1765156663836.png" alt="일반형 후면" style="width: 100px; height: 120px; object-fit: contain;">
                                 </td>
@@ -1112,7 +1221,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="padding: 12px; text-align: center; font-weight: 700; font-size: 14px; background: #F8F8F8; border: 1px solid #E0E0E0;">정면</td>
+                                <td style="padding: 12px; text-align: center; font-weight: 700; font-size: 14px; background: #F8F8F8; border: 1px solid #E0E0E0;" data-i18n="tbl_front">정면</td>
                                 <td style="padding: 10px; text-align: center; border: 1px solid #E0E0E0;">
                                     <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1765156663825.png" alt="일반형 정면" style="width: 100px; height: 120px; object-fit: contain;">
                                 </td>
@@ -1127,47 +1236,47 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="padding: 14px 10px; text-align: center; font-weight: 700; font-size: 14px; background: #F8F8F8; border: 1px solid #E0E0E0;">결론</td>
-                                <td style="padding: 14px 10px; text-align: center; font-size: 13px; font-weight: 600; border: 1px solid #E0E0E0; color: #C53030;">어깨<br>부담 높음</td>
-                                <td style="padding: 14px 10px; text-align: center; font-size: 13px; font-weight: 600; border: 1px solid #E0E0E0; color: #C53030;">허리, 골반<br>부담 높음</td>
-                                <td style="padding: 14px 10px; text-align: center; font-size: 13px; font-weight: 600; border: 1px solid #E0E0E0; color: #2E7D32;">전반적으로<br>양호</td>
-                                <td style="padding: 14px 10px; text-align: center; font-size: 13px; font-weight: 700; border: 1px solid #E0E0E0; color: var(--deep-brown); background: linear-gradient(135deg, rgba(138, 107, 87, 0.15) 0%, rgba(232, 165, 152, 0.15) 100%);">전반적으로<br>아주 양호</td>
+                                <td style="padding: 14px 10px; text-align: center; font-weight: 700; font-size: 14px; background: #F8F8F8; border: 1px solid #E0E0E0;" data-i18n="tbl_sum">결론</td>
+                                <td style="padding: 14px 10px; text-align: center; font-size: 13px; font-weight: 600; border: 1px solid #E0E0E0; color: #C53030;" data-i18n="tbl_c1">어깨<br>부담 높음</td>
+                                <td style="padding: 14px 10px; text-align: center; font-size: 13px; font-weight: 600; border: 1px solid #E0E0E0; color: #C53030;" data-i18n="tbl_c2">허리, 골반<br>부담 높음</td>
+                                <td style="padding: 14px 10px; text-align: center; font-size: 13px; font-weight: 600; border: 1px solid #E0E0E0; color: #2E7D32;" data-i18n="tbl_c3">전반적으로<br>양호</td>
+                                <td style="padding: 14px 10px; text-align: center; font-size: 13px; font-weight: 700; border: 1px solid #E0E0E0; color: var(--deep-brown); background: linear-gradient(135deg, rgba(138, 107, 87, 0.15) 0%, rgba(232, 165, 152, 0.15) 100%);" data-i18n="tbl_c4">전반적으로<br>아주 양호</td>
                             </tr>
                         </tbody>
                     </table>
                     
                     <div style="display: flex; justify-content: center; align-items: center; gap: 24px; margin-top: 20px; padding: 12px 20px; background: #f1f5f9; border-radius: 25px;">
-                        <span style="font-size: 13px; font-weight: 600; color: #4A4A4A;">부담강도 :</span>
-                        <span style="display: flex; align-items: center; gap: 6px; font-size: 12px;"><span style="width: 14px; height: 14px; background: #C6FF00; border-radius: 50%; display: inline-block;"></span> 약</span>
-                        <span style="display: flex; align-items: center; gap: 6px; font-size: 12px;"><span style="width: 14px; height: 14px; background: #FDD835; border-radius: 50%; display: inline-block;"></span> 중</span>
-                        <span style="display: flex; align-items: center; gap: 6px; font-size: 12px;"><span style="width: 14px; height: 14px; background: #E53935; border-radius: 50%; display: inline-block;"></span> 강</span>
-                        <span style="display: flex; align-items: center; gap: 6px; font-size: 12px;"><span style="width: 14px; height: 14px; background: #111; border-radius: 50%; display: inline-block;"></span> 최강</span>
+                        <span style="font-size: 13px; font-weight: 600; color: #4A4A4A;" data-i18n="leg_title">부담강도 :</span>
+                        <span style="display: flex; align-items: center; gap: 6px; font-size: 12px;"><span style="width: 14px; height: 14px; background: #C6FF00; border-radius: 50%; display: inline-block;"></span> <span data-i18n="leg_l">약</span></span>
+                        <span style="display: flex; align-items: center; gap: 6px; font-size: 12px;"><span style="width: 14px; height: 14px; background: #FDD835; border-radius: 50%; display: inline-block;"></span> <span data-i18n="leg_m">중</span></span>
+                        <span style="display: flex; align-items: center; gap: 6px; font-size: 12px;"><span style="width: 14px; height: 14px; background: #E53935; border-radius: 50%; display: inline-block;"></span> <span data-i18n="leg_h">강</span></span>
+                        <span style="display: flex; align-items: center; gap: 6px; font-size: 12px;"><span style="width: 14px; height: 14px; background: #111; border-radius: 50%; display: inline-block;"></span> <span data-i18n="leg_x">최강</span></span>
                     </div>
                 </div>
 
                 <!-- 왜 압력 분산이 중요할까요? -->
                 <div class="fade-in" style="max-width: 1100px; margin: 0 auto;">
-                    <h3 style="font-size: 22px; font-weight: 800; color: var(--text-dark); margin-bottom: 20px; text-align: center;">왜 압력 분산이 중요할까요?</h3>
+                    <h3 style="font-size: 22px; font-weight: 800; color: var(--text-dark); margin-bottom: 20px; text-align: center;" data-i18n="why_pr">왜 압력 분산이 중요할까요?</h3>
                     <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
                         <div style="padding: 24px; background: white; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); text-align: center;">
                             <div style="font-size: 36px; margin-bottom: 12px;">👶</div>
-                            <div style="font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px;">아기의 편안함</div>
-                            <div style="font-size: 14px; color: var(--text-light); line-height: 1.6;">낮은 압력은 아기 신체에<br>부담을 주지 않습니다.</div>
+                            <div style="font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px;" data-i18n="why1t">아기의 편안함</div>
+                            <div style="font-size: 14px; color: var(--text-light); line-height: 1.6;" data-i18n="why1d">낮은 압력은 아기 신체에<br>부담을 주지 않습니다.</div>
                         </div>
                         <div style="padding: 24px; background: white; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); text-align: center;">
                             <div style="font-size: 36px; margin-bottom: 12px;">👨‍👩‍👧</div>
-                            <div style="font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px;">부모 어깨 부담 감소</div>
-                            <div style="font-size: 14px; color: var(--text-light); line-height: 1.6;">균등한 압력 분산으로<br>부담을 최소화합니다.</div>
+                            <div style="font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px;" data-i18n="why2t">부모 어깨 부담 감소</div>
+                            <div style="font-size: 14px; color: var(--text-light); line-height: 1.6;" data-i18n="why2d">균등한 압력 분산으로<br>부담을 최소화합니다.</div>
                         </div>
                         <div style="padding: 24px; background: white; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); text-align: center;">
                             <div style="font-size: 36px; margin-bottom: 12px;">⏱️</div>
-                            <div style="font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px;">장시간 사용 가능</div>
-                            <div style="font-size: 14px; color: var(--text-light); line-height: 1.6;">압력이 낮을수록<br>피로감이 적습니다.</div>
+                            <div style="font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px;" data-i18n="why3t">장시간 사용 가능</div>
+                            <div style="font-size: 14px; color: var(--text-light); line-height: 1.6;" data-i18n="why3d">압력이 낮을수록<br>피로감이 적습니다.</div>
                         </div>
                         <div style="padding: 24px; background: white; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); text-align: center;">
                             <div style="font-size: 36px; margin-bottom: 12px;">🔬</div>
-                            <div style="font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px;">과학적 검증</div>
-                            <div style="font-size: 14px; color: var(--text-light); line-height: 1.6;">공인인증기관의 정밀 측정으로<br>입증되었습니다.</div>
+                            <div style="font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px;" data-i18n="why4t">과학적 검증</div>
+                            <div style="font-size: 14px; color: var(--text-light); line-height: 1.6;" data-i18n="why4d">공인인증기관의 정밀 측정으로<br>입증되었습니다.</div>
                         </div>
                     </div>
                 </div>
@@ -1178,15 +1287,15 @@
         <section class="slide-section dark">
             <div class="slide-content">
                 <div style="text-align: center; margin-bottom: 50px;">
-                    <h2 class="slide-title fade-in" style="text-align: center; color: white;">특허 및 인증</h2>
-                    <p class="slide-body fade-in" style="text-align: center; max-width: 600px; margin: 0 auto;">
+                    <h2 class="slide-title fade-in" style="text-align: center; color: white;" data-i18n="cert_title">특허 및 인증</h2>
+                    <p class="slide-body fade-in" style="text-align: center; max-width: 600px; margin: 0 auto;" data-i18n="cert_sub">
                         세계가 인정한 베베스완의 기술력과 안전성
                     </p>
                 </div>
 
                 <!-- 수상 내역 -->
                 <div class="fade-in" style="margin-bottom: 60px;">
-                    <h3 style="text-align: center; font-size: 24px; color: var(--accent-coral); margin-bottom: 30px;">수상 내역</h3>
+                    <h3 style="text-align: center; font-size: 24px; color: var(--accent-coral); margin-bottom: 30px;" data-i18n="aw_title">수상 내역</h3>
                     <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 900px; margin: 0 auto;">
                         <a href="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1766551915672.jpg"
                             target="_blank"
@@ -1197,8 +1306,8 @@
                                 <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1766551915672.jpg"
                                     alt="여성발명상" style="width: 100%; height: 100%; object-fit: contain;">
                             </div>
-                            <h4 style="color: var(--accent-coral); font-size: 18px; margin-bottom: 6px;">여성발명품박람회 금상</h4>
-                            <p style="color: rgba(255,255,255,0.6); font-size: 14px;">Won the Gold Prize at the Women Inventors Expo</p>
+                            <h4 style="color: var(--accent-coral); font-size: 18px; margin-bottom: 6px;" data-i18n="aw1t">여성발명품박람회 금상</h4>
+                            <p style="color: rgba(255,255,255,0.6); font-size: 14px;" data-i18n="aw1e">Won the Gold Prize at the Women Inventors Expo</p>
                             <span style="display: inline-block; margin-top: 12px; background: var(--accent-coral); color: var(--text-dark); padding: 4px 16px; border-radius: 20px; font-size: 13px; font-weight: 600;">2020</span>
                         </a>
                         <a href="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1766551915674.jpg"
@@ -1210,8 +1319,8 @@
                                 <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1766551915674.jpg"
                                     alt="여성특별상" style="width: 100%; height: 100%; object-fit: contain;">
                             </div>
-                            <h4 style="color: var(--accent-coral); font-size: 18px; margin-bottom: 6px;">여성가족부 장관상</h4>
-                            <p style="color: rgba(255,255,255,0.6); font-size: 14px;">Minister of Gender Equality and Family Award</p>
+                            <h4 style="color: var(--accent-coral); font-size: 18px; margin-bottom: 6px;" data-i18n="aw2t">여성가족부 장관상</h4>
+                            <p style="color: rgba(255,255,255,0.6); font-size: 14px;" data-i18n="aw2e">Minister of Gender Equality and Family Award</p>
                             <span style="display: inline-block; margin-top: 12px; background: var(--accent-coral); color: var(--text-dark); padding: 4px 16px; border-radius: 20px; font-size: 13px; font-weight: 600;">2020</span>
                         </a>
                     </div>
@@ -1219,7 +1328,7 @@
 
                 <!-- 특허 등록 -->
                 <div class="fade-in" style="margin-bottom: 60px;">
-                    <h3 style="text-align: center; font-size: 24px; color: var(--accent-coral); margin-bottom: 30px;">특허 등록</h3>
+                    <h3 style="text-align: center; font-size: 24px; color: var(--accent-coral); margin-bottom: 30px;" data-i18n="pat_title">특허 등록</h3>
                     <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 900px; margin: 0 auto;">
                         <a href="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1766551915670.png"
                             target="_blank"
@@ -1230,9 +1339,9 @@
                                 <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1766551915670.png"
                                     alt="디자인등록증" style="width: 100%; height: 100%; object-fit: contain;">
                             </div>
-                            <h4 style="color: white; font-size: 17px; margin-bottom: 6px;">디자인 특허 등록</h4>
-                            <p style="color: var(--accent-coral); font-size: 14px; font-weight: 600;">Design Patent Registration</p>
-                            <p style="color: rgba(255,255,255,0.5); font-size: 13px; margin-top: 12px;">등록번호: 제 30-1086989 호<br>등록일: 2020년 12월 09일</p>
+                            <h4 style="color: white; font-size: 17px; margin-bottom: 6px;" data-i18n="des_t">디자인 특허 등록</h4>
+                            <p style="color: var(--accent-coral); font-size: 14px; font-weight: 600;" data-i18n="des_e">Design Patent Registration</p>
+                            <p style="color: rgba(255,255,255,0.5); font-size: 13px; margin-top: 12px;" data-i18n="des_d">등록번호: 제 30-1086989 호<br>등록일: 2020년 12월 09일</p>
                         </a>
                         <a href="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1766551915668.png"
                             target="_blank"
@@ -1243,32 +1352,32 @@
                                 <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1766551915668.png"
                                     alt="특허증" style="width: 100%; height: 100%; object-fit: contain;">
                             </div>
-                            <h4 style="color: white; font-size: 17px; margin-bottom: 6px;">기술 특허 등록</h4>
-                            <p style="color: var(--accent-coral); font-size: 14px; font-weight: 600;">Technology Patent Registration</p>
-                            <p style="color: rgba(255,255,255,0.5); font-size: 13px; margin-top: 12px;">특허번호: 제 10-2684472 호<br>등록일: 2024년 07월 09일</p>
+                            <h4 style="color: white; font-size: 17px; margin-bottom: 6px;" data-i18n="tech_t">기술 특허 등록</h4>
+                            <p style="color: var(--accent-coral); font-size: 14px; font-weight: 600;" data-i18n="tech_e">Technology Patent Registration</p>
+                            <p style="color: rgba(255,255,255,0.5); font-size: 13px; margin-top: 12px;" data-i18n="tech_d">특허번호: 제 10-2684472 호<br>등록일: 2024년 07월 09일</p>
                         </a>
                     </div>
                 </div>
 
                 <!-- 안전 인증 -->
                 <div class="fade-in">
-                    <h3 style="text-align: center; font-size: 24px; color: var(--accent-coral); margin-bottom: 30px;">안전 인증</h3>
+                    <h3 style="text-align: center; font-size: 24px; color: var(--accent-coral); margin-bottom: 30px;" data-i18n="safe_title">안전 인증</h3>
                     <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 900px; margin: 0 auto;">
                         <a href="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1766552291998.jpg"
                             target="_blank"
                             style="text-decoration: none; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 24px; transition: all 0.3s ease; cursor: pointer;"
                             onmouseover="this.style.borderColor='#22c55e'; this.style.transform='translateY(-5px)'"
                             onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
-                            <h4 style="color: white; font-size: 17px; margin-bottom: 4px;">국제고관절협회 인증</h4>
-                            <p style="color: var(--accent-coral); font-size: 14px; margin-bottom: 16px;">IHDI "Hip-Healthy" Certification</p>
+                            <h4 style="color: white; font-size: 17px; margin-bottom: 4px;" data-i18n="ihdi_t">국제고관절협회 인증</h4>
+                            <p style="color: var(--accent-coral); font-size: 14px; margin-bottom: 16px;" data-i18n="ihdi_e">IHDI "Hip-Healthy" Certification</p>
                             <div style="width: 100%; height: 200px; overflow: hidden; border-radius: 12px; margin-bottom: 16px; background: #fff;">
                                 <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1766552291998.jpg"
                                     alt="힙조인트 인증" style="width: 100%; height: 100%; object-fit: contain;">
                             </div>
-                            <p style="color: rgba(255,255,255,0.7); font-size: 14px; line-height: 1.7; padding: 14px; background: rgba(34, 197, 94, 0.1); border-radius: 10px; border-left: 3px solid #22c55e;">
+                            <p style="color: rgba(255,255,255,0.7); font-size: 14px; line-height: 1.7; padding: 14px; background: rgba(34, 197, 94, 0.1); border-radius: 10px; border-left: 3px solid #22c55e;" data-i18n="ihdi_q">
                                 "IHDI acknowledges the BEBESWAN Vest Baby Carrier as a <strong style="color: #22c55e;">"hip-healthy"</strong> product when used as directed."
                             </p>
-                            <p style="color: rgba(255,255,255,0.4); font-size: 13px; margin-top: 12px; text-align: right;">
+                            <p style="color: rgba(255,255,255,0.4); font-size: 13px; margin-top: 12px; text-align: right;" data-i18n="ihdi_src">
                                 - International Hip Dysplasia Institute, 2020
                             </p>
                         </a>
@@ -1277,16 +1386,16 @@
                             style="text-decoration: none; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 24px; transition: all 0.3s ease; cursor: pointer;"
                             onmouseover="this.style.borderColor='#3b82f6'; this.style.transform='translateY(-5px)'"
                             onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
-                            <h4 style="color: white; font-size: 17px; margin-bottom: 4px;">한국 KC 안전 인증</h4>
-                            <p style="color: var(--accent-coral); font-size: 14px; margin-bottom: 16px;">Korea Certification (KC) Safety Mark</p>
+                            <h4 style="color: white; font-size: 17px; margin-bottom: 4px;" data-i18n="kc_t">한국 KC 안전 인증</h4>
+                            <p style="color: var(--accent-coral); font-size: 14px; margin-bottom: 16px;" data-i18n="kc_e">Korea Certification (KC) Safety Mark</p>
                             <div style="width: 100%; height: 200px; overflow: hidden; border-radius: 12px; margin-bottom: 16px; background: #fff;">
                                 <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1766551915665.jpg"
                                     alt="KC 인증" style="width: 100%; height: 100%; object-fit: contain;">
                             </div>
-                            <p style="color: rgba(255,255,255,0.7); font-size: 14px; line-height: 1.7; padding: 14px; background: rgba(59, 130, 246, 0.1); border-radius: 10px; border-left: 3px solid #3b82f6;">
+                            <p style="color: rgba(255,255,255,0.7); font-size: 14px; line-height: 1.7; padding: 14px; background: rgba(59, 130, 246, 0.1); border-radius: 10px; border-left: 3px solid #3b82f6;" data-i18n="kc_p">
                                 대한민국 산업통상자원부 국가기술표준원에서 인증하는 <strong style="color: #3b82f6;">KC 안전 마크</strong>를 획득하여 제품의 안전성을 공식 인증받았습니다.
                             </p>
-                            <p style="color: rgba(255,255,255,0.4); font-size: 13px; margin-top: 12px; text-align: right;">
+                            <p style="color: rgba(255,255,255,0.4); font-size: 13px; margin-top: 12px; text-align: right;" data-i18n="kc_src">
                                 - 국가기술표준원 (KATS)
                             </p>
                         </a>
@@ -1299,8 +1408,8 @@
         <section class="slide-section" style="background: linear-gradient(180deg, var(--ivory) 0%, #F8F5F2 100%);">
             <div class="slide-content">
                 <div style="text-align: center; margin-bottom: 50px;">
-                    <h2 class="slide-title fade-in" style="text-align: center;">Company History</h2>
-                    <p class="slide-body fade-in" style="text-align: center; max-width: 600px; margin: 0 auto;">
+                    <h2 class="slide-title fade-in" style="text-align: center;" data-i18n="hist_title">Company History</h2>
+                    <p class="slide-body fade-in" style="text-align: center; max-width: 600px; margin: 0 auto;" data-i18n="hist_sub">
                         베베스완의 혁신적인 여정과 조끼형 아기띠의 진화
                     </p>
                 </div>
@@ -1317,47 +1426,47 @@
                         <div style="display: flex; flex-direction: column; gap: 10px;">
                             <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: white; border-left: 3px solid var(--warm-brown); border-radius: 0 12px 12px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
                                 <span style="color: var(--warm-brown); font-weight: 700; min-width: 45px; font-size: 14px;">2019</span>
-                                <span style="color: var(--text-light); font-size: 14px;">Founded in September</span>
+                                <span style="color: var(--text-light); font-size: 14px;" data-i18n="hist_2019">Founded in September</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: white; border-left: 3px solid var(--warm-brown); border-radius: 0 12px 12px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
                                 <span style="color: var(--warm-brown); font-weight: 700; min-width: 45px; font-size: 14px;">2020</span>
-                                <span style="color: var(--text-light); font-size: 14px;">세계 최초 조끼형 아기띠 출시</span>
+                                <span style="color: var(--text-light); font-size: 14px;" data-i18n="hist_20a">세계 최초 조끼형 아기띠 출시</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: white; border-left: 3px solid var(--warm-brown); border-radius: 0 12px 12px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
                                 <span style="color: var(--warm-brown); font-weight: 700; min-width: 45px; font-size: 14px;">2020</span>
-                                <span style="color: var(--text-light); font-size: 14px;">여성발명품박람회 금상 수상</span>
+                                <span style="color: var(--text-light); font-size: 14px;" data-i18n="hist_20b">여성발명품박람회 금상 수상</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: white; border-left: 3px solid var(--warm-brown); border-radius: 0 12px 12px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
                                 <span style="color: var(--warm-brown); font-weight: 700; min-width: 45px; font-size: 14px;">2020</span>
-                                <span style="color: var(--text-light); font-size: 14px;">여성가족부 장관상 수상</span>
+                                <span style="color: var(--text-light); font-size: 14px;" data-i18n="hist_20c">여성가족부 장관상 수상</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: white; border-left: 3px solid var(--warm-brown); border-radius: 0 12px 12px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
                                 <span style="color: var(--warm-brown); font-weight: 700; min-width: 45px; font-size: 14px;">2024</span>
-                                <span style="color: var(--text-light); font-size: 14px;">한국소비자베스트브랜드대상 수상</span>
+                                <span style="color: var(--text-light); font-size: 14px;" data-i18n="hist_24a">한국소비자베스트브랜드대상 수상</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: white; border-left: 3px solid var(--warm-brown); border-radius: 0 12px 12px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
                                 <span style="color: var(--warm-brown); font-weight: 700; min-width: 45px; font-size: 14px;">2024</span>
-                                <span style="color: var(--text-light); font-size: 14px;">일본 수출 개시</span>
+                                <span style="color: var(--text-light); font-size: 14px;" data-i18n="hist_24b">일본 수출 개시</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: white; border-left: 3px solid var(--warm-brown); border-radius: 0 12px 12px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
                                 <span style="color: var(--warm-brown); font-weight: 700; min-width: 45px; font-size: 14px;">2024</span>
-                                <span style="color: var(--text-light); font-size: 14px;">Korea Brand Award 1위</span>
+                                <span style="color: var(--text-light); font-size: 14px;" data-i18n="hist_24c">Korea Brand Award 1위</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: white; border-left: 3px solid var(--warm-brown); border-radius: 0 12px 12px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
                                 <span style="color: var(--warm-brown); font-weight: 700; min-width: 45px; font-size: 14px;">2025</span>
-                                <span style="color: var(--text-light); font-size: 14px;">KCBI 한국소비자대상 수상</span>
+                                <span style="color: var(--text-light); font-size: 14px;" data-i18n="hist_25a">KCBI 한국소비자대상 수상</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: white; border-left: 3px solid var(--warm-brown); border-radius: 0 12px 12px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
                                 <span style="color: var(--warm-brown); font-weight: 700; min-width: 45px; font-size: 14px;">2025</span>
-                                <span style="color: var(--text-light); font-size: 14px;">베베스완 주식회사 설립</span>
+                                <span style="color: var(--text-light); font-size: 14px;" data-i18n="hist_25b">베베스완 주식회사 설립</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: linear-gradient(135deg, rgba(232,165,152,0.15) 0%, rgba(232,165,152,0.05) 100%); border-left: 3px solid var(--accent-coral); border-radius: 0 12px 12px 0; border: 1px solid rgba(232,165,152,0.3);">
                                 <span style="color: var(--accent-coral); font-weight: 700; min-width: 45px; font-size: 14px;">2026</span>
-                                <span style="color: var(--deep-brown); font-size: 14px; font-weight: 600;">미국 시장 진출 계약 확정</span>
+                                <span style="color: var(--deep-brown); font-size: 14px; font-weight: 600;" data-i18n="hist_26a">미국 시장 진출 계약 확정</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: linear-gradient(135deg, rgba(232,165,152,0.15) 0%, rgba(232,165,152,0.05) 100%); border-left: 3px solid var(--accent-coral); border-radius: 0 12px 12px 0; border: 1px solid rgba(232,165,152,0.3);">
                                 <span style="color: var(--accent-coral); font-weight: 700; min-width: 45px; font-size: 14px;">2026</span>
-                                <span style="color: var(--deep-brown); font-size: 14px; font-weight: 600;">프리미엄 신제품 "이터니티" 출시</span>
+                                <span style="color: var(--deep-brown); font-size: 14px; font-weight: 600;" data-i18n="hist_26b">프리미엄 신제품 "이터니티" 출시</span>
                             </div>
                         </div>
                     </div>
@@ -1365,12 +1474,12 @@
                     <!-- 제품 라인업 이미지 -->
                     <div>
                         <div style="background: white; border: 1px solid rgba(0,0,0,0.08); border-radius: 20px; padding: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.06);">
-                            <h3 style="text-align: center; font-size: 20px; color: var(--deep-brown); margin-bottom: 12px;">조끼아기띠 라인업</h3>
-                            <p style="text-align: center; font-size: 14px; color: var(--text-light); margin-bottom: 20px; font-style: italic;">
+                            <h3 style="text-align: center; font-size: 20px; color: var(--deep-brown); margin-bottom: 12px;" data-i18n="lineup_title">조끼아기띠 라인업</h3>
+                            <p style="text-align: center; font-size: 14px; color: var(--text-light); margin-bottom: 20px; font-style: italic;" data-i18n="lineup_quote">
                                 "오직, 엄마와 아기만을 위해<br>베베스완의 아기띠 연구소는 지금도 끊임없이 연구합니다"
                             </p>
                             <img src="https://images002.sabangnet.co.kr/v1/AUTH_5e5b33290a9e40f6a58801628c96c724/mw164446/image/1766552701772.png"
-                                alt="조끼아기띠 라인업 타임라인" style="width: 100%; border-radius: 12px;">
+                                alt="조끼아기띠 라인업 타임라인" style="width: 100%; border-radius: 12px;" data-i18n-alt="lineup_img_alt">
                         </div>
                     </div>
                 </div>
@@ -1380,26 +1489,26 @@
         <!-- Q&A Section -->
         <section class="slide-section qa-section-full">
             <div class="slide-content">
-                <div class="slide-number fade-in">Q&A</div>
-                <h2 class="slide-title fade-in">자주 묻는 질문</h2>
-                <p class="slide-body fade-in" style="margin-bottom: 50px;">
+                <div class="slide-number fade-in" data-i18n="qa_sn">Q&A</div>
+                <h2 class="slide-title fade-in" data-i18n="qa_title">자주 묻는 질문</h2>
+                <p class="slide-body fade-in" style="margin-bottom: 50px;" data-i18n="qa_intro">
                     베베스완 이터니티 조끼아기띠에 대해<br>고객들이 가장 궁금해하는 질문들을 정리했습니다.
                 </p>
 
                 <!-- Category 1 -->
                 <div class="qa-category fade-in">
-                    <h3 class="qa-category-title">1. 사용 대상 및 사이즈 관련</h3>
+                    <h3 class="qa-category-title" data-i18n="qcat1">1. 사용 대상 및 사이즈 관련</h3>
                     <div class="qa-list">
                         <div class="qa-item">
-                            <div class="qa-question">Q: 아기 몇 개월부터 사용 가능한가요?</div>
+                            <div class="qa-question" data-i18n="q1">Q: 아기 몇 개월부터 사용 가능한가요?</div>
                             <div class="qa-answer">
-                                <p><strong>A:</strong> 신생아(0개월)부터 <strong>36개월(몸무게 15kg 미만)</strong>까지 사용 가능합니다.</p>
+                                <p data-i18n="a1"><strong>A:</strong> 신생아(0개월)부터 <strong>36개월(몸무게 15kg 미만)</strong>까지 사용 가능합니다.</p>
                             </div>
                         </div>
                         <div class="qa-item">
-                            <div class="qa-question">Q: 체격이 큰 아빠나 조부모님도 착용할 수 있나요?</div>
+                            <div class="qa-question" data-i18n="q2">Q: 체격이 큰 아빠나 조부모님도 착용할 수 있나요?</div>
                             <div class="qa-answer">
-                                <p><strong>A:</strong> 네, 가능합니다. 이터니티 모델은 사이즈 제한을 없애 <strong>가슴 및 허리둘레 최대 160cm</strong>까지 조절이 가능하며, 착용자 몸무게 43~100kg, 신장 155~190cm까지 폭넓게 권장합니다.</p>
+                                <p data-i18n="a2"><strong>A:</strong> 네, 가능합니다. 이터니티 모델은 사이즈 제한을 없애 <strong>가슴 및 허리둘레 최대 160cm</strong>까지 조절이 가능하며, 착용자 몸무게 43~100kg, 신장 155~190cm까지 폭넓게 권장합니다.</p>
                             </div>
                         </div>
                     </div>
@@ -1407,18 +1516,18 @@
 
                 <!-- Category 2 -->
                 <div class="qa-category fade-in">
-                    <h3 class="qa-category-title">2. 착용감 및 건강 관련</h3>
+                    <h3 class="qa-category-title" data-i18n="qcat2">2. 착용감 및 건강 관련</h3>
                     <div class="qa-list">
                         <div class="qa-item">
-                            <div class="qa-question">Q: 장시간 착용해도 정말 어깨와 허리가 안 아픈가요?</div>
+                            <div class="qa-question" data-i18n="q3">Q: 장시간 착용해도 정말 어깨와 허리가 안 아픈가요?</div>
                             <div class="qa-answer">
-                                <p><strong>A:</strong> 일반 아기띠와 달리 <strong>조끼형 디자인</strong>을 채택하여 아기의 무게를 어깨나 허리 한 점이 아닌 <strong>등 전체로 고르게 분산</strong>시킵니다. 공인인증기관의 압력 시험을 통해 우수한 무게 분산 기술이 입증되었으며, 부모가 1자 자세를 유지하도록 도와 통증을 최소화합니다.</p>
+                                <p data-i18n="a3"><strong>A:</strong> 일반 아기띠와 달리 <strong>조끼형 디자인</strong>을 채택하여 아기의 무게를 어깨나 허리 한 점이 아닌 <strong>등 전체로 고르게 분산</strong>시킵니다. 공인인증기관의 압력 시험을 통해 우수한 무게 분산 기술이 입증되었으며, 부모가 1자 자세를 유지하도록 도와 통증을 최소화합니다.</p>
                             </div>
                         </div>
                         <div class="qa-item">
-                            <div class="qa-question">Q: 혼자서도 쉽게 착용할 수 있나요?</div>
+                            <div class="qa-question" data-i18n="q4">Q: 혼자서도 쉽게 착용할 수 있나요?</div>
                             <div class="qa-answer">
-                                <p><strong>A:</strong> 네, 등 뒤에 손을 뻗어 채워야 하는 복잡한 버클이 없습니다. 조끼처럼 입고 <strong>전면 지퍼만 올리면 끝나는 방식</strong>으로 혼자서도 <strong>5초 만에 착용</strong>이 가능합니다.</p>
+                                <p data-i18n="a4"><strong>A:</strong> 네, 등 뒤에 손을 뻗어 채워야 하는 복잡한 버클이 없습니다. 조끼처럼 입고 <strong>전면 지퍼만 올리면 끝나는 방식</strong>으로 혼자서도 <strong>5초 만에 착용</strong>이 가능합니다.</p>
                             </div>
                         </div>
                     </div>
@@ -1426,30 +1535,30 @@
 
                 <!-- Category 3 -->
                 <div class="qa-category fade-in">
-                    <h3 class="qa-category-title">3. 주요 기능 및 활용 관련</h3>
+                    <h3 class="qa-category-title" data-i18n="qcat3">3. 주요 기능 및 활용 관련</h3>
                     <div class="qa-list">
                         <div class="qa-item">
-                            <div class="qa-question">Q: 아기띠를 한 상태로 수유가 가능한가요?</div>
+                            <div class="qa-question" data-i18n="q5">Q: 아기띠를 한 상태로 수유가 가능한가요?</div>
                             <div class="qa-answer">
-                                <p><strong>A:</strong> 네, 아기띠를 벗지 않고 <strong>안쪽의 스테이락 지퍼</strong>를 내리거나 어깨 버클을 조절하여 마주 본 상태 그대로 <strong>모유 및 분유 수유</strong>를 편하게 할 수 있습니다.</p>
+                                <p data-i18n="a5"><strong>A:</strong> 네, 아기띠를 벗지 않고 <strong>안쪽의 스테이락 지퍼</strong>를 내리거나 어깨 버클을 조절하여 마주 본 상태 그대로 <strong>모유 및 분유 수유</strong>를 편하게 할 수 있습니다.</p>
                             </div>
                         </div>
                         <div class="qa-item">
-                            <div class="qa-question">Q: 외출 시 아기 의자(부스터)로도 쓸 수 있나요?</div>
+                            <div class="qa-question" data-i18n="q6">Q: 외출 시 아기 의자(부스터)로도 쓸 수 있나요?</div>
                             <div class="qa-answer">
-                                <p><strong>A:</strong> 그렇습니다. 식당이나 카페의 <strong>일반 의자에 아기띠를 입히고 고정</strong>하면 훌륭한 휴대용 부스터가 됩니다.</p>
+                                <p data-i18n="a6"><strong>A:</strong> 그렇습니다. 식당이나 카페의 <strong>일반 의자에 아기띠를 입히고 고정</strong>하면 훌륭한 휴대용 부스터가 됩니다.</p>
                             </div>
                         </div>
                         <div class="qa-item">
-                            <div class="qa-question">Q: 잠든 아기를 깨우지 않고 눕힐 수 있나요?</div>
+                            <div class="qa-question" data-i18n="q7">Q: 잠든 아기를 깨우지 않고 눕힐 수 있나요?</div>
                             <div class="qa-answer">
-                                <p><strong>A:</strong> 소음이 심한 벨크로(찍찍이) 대신 <strong>무소음 지퍼</strong>를 사용합니다. 등 쪽의 <strong>백지퍼</strong>를 열어 양파 껍질을 벗기듯 조용히 아기를 눕힐 수 있어 잠든 아기를 깨울 걱정이 없습니다.</p>
+                                <p data-i18n="a7"><strong>A:</strong> 소음이 심한 벨크로(찍찍이) 대신 <strong>무소음 지퍼</strong>를 사용합니다. 등 쪽의 <strong>백지퍼</strong>를 열어 양파 껍질을 벗기듯 조용히 아기를 눕힐 수 있어 잠든 아기를 깨울 걱정이 없습니다.</p>
                             </div>
                         </div>
                         <div class="qa-item">
-                            <div class="qa-question">Q: 카시트에 태울 때 매번 아기띠를 벗어야 하나요?</div>
+                            <div class="qa-question" data-i18n="q8">Q: 카시트에 태울 때 매번 아기띠를 벗어야 하나요?</div>
                             <div class="qa-answer">
-                                <p><strong>A:</strong> 아기띠 전체를 벗을 필요 없이 <strong>아기만 쏙 안아서 카시트에 태우면 됩니다.</strong> 부모는 아기띠(조끼)를 입은 채로 바로 운전이 가능해 매우 편리합니다.</p>
+                                <p data-i18n="a8"><strong>A:</strong> 아기띠 전체를 벗을 필요 없이 <strong>아기만 쏙 안아서 카시트에 태우면 됩니다.</strong> 부모는 아기띠(조끼)를 입은 채로 바로 운전이 가능해 매우 편리합니다.</p>
                             </div>
                         </div>
                     </div>
@@ -1457,18 +1566,18 @@
 
                 <!-- Category 4 -->
                 <div class="qa-category fade-in">
-                    <h3 class="qa-category-title">4. 소재 및 안전성 관련</h3>
+                    <h3 class="qa-category-title" data-i18n="qcat4">4. 소재 및 안전성 관련</h3>
                     <div class="qa-list">
                         <div class="qa-item">
-                            <div class="qa-question">Q: 여름에 사용하기에 너무 덥지는 않을까요?</div>
+                            <div class="qa-question" data-i18n="q9">Q: 여름에 사용하기에 너무 덥지는 않을까요?</div>
                             <div class="qa-answer">
-                                <p><strong>A:</strong> 통기성이 우수한 <strong>에어메쉬 소재</strong>를 사용했습니다. 특히 부모와 아기 사이에 <strong>에어쉴드(메쉬 막)</strong>가 있어 땀 참을 방지하며, 전용 포켓에 <strong>아이스팩</strong>을 넣어 더 시원하게 사용할 수 있습니다.</p>
+                                <p data-i18n="a9"><strong>A:</strong> 통기성이 우수한 <strong>에어메쉬 소재</strong>를 사용했습니다. 특히 부모와 아기 사이에 <strong>에어쉴드(메쉬 막)</strong>가 있어 땀 참을 방지하며, 전용 포켓에 <strong>아이스팩</strong>을 넣어 더 시원하게 사용할 수 있습니다.</p>
                             </div>
                         </div>
                         <div class="qa-item">
-                            <div class="qa-question">Q: 안전 인증은 받은 제품인가요?</div>
+                            <div class="qa-question" data-i18n="q10">Q: 안전 인증은 받은 제품인가요?</div>
                             <div class="qa-answer">
-                                <p><strong>A:</strong> 한국의 <strong>KC 인증</strong>은 물론, 미국의 <strong>CPSIA</strong>와 <strong>ASTM</strong>, 유럽의 <strong>CE 인증</strong>을 모두 획득했습니다. 또한 아기의 고관절 건강을 고려한 설계로 <strong>국제고관절협회(IHDI)</strong>의 인증도 완료되었습니다.</p>
+                                <p data-i18n="a10"><strong>A:</strong> 한국의 <strong>KC 인증</strong>은 물론, 미국의 <strong>CPSIA</strong>와 <strong>ASTM</strong>, 유럽의 <strong>CE 인증</strong>을 모두 획득했습니다. 또한 아기의 고관절 건강을 고려한 설계로 <strong>국제고관절협회(IHDI)</strong>의 인증도 완료되었습니다.</p>
                             </div>
                         </div>
                     </div>
@@ -1476,18 +1585,18 @@
 
                 <!-- Category 5 -->
                 <div class="qa-category fade-in">
-                    <h3 class="qa-category-title">5. 세탁 및 관리 관련</h3>
+                    <h3 class="qa-category-title" data-i18n="qcat5">5. 세탁 및 관리 관련</h3>
                     <div class="qa-list">
                         <div class="qa-item">
-                            <div class="qa-question">Q: 세탁기 사용이 가능한가요?</div>
+                            <div class="qa-question" data-i18n="q11">Q: 세탁기 사용이 가능한가요?</div>
                             <div class="qa-answer">
-                                <p><strong>A:</strong> 찬물에 중성세제를 사용하여 <strong>세탁망에 넣고 울코스로 단독 세탁</strong>하시길 권장합니다. 지퍼와 버클은 모두 잠근 상태로 세탁해야 하며, 제품 변형 방지를 위해 <strong>건조기 사용은 절대 금지</strong>하며 그늘에서 자연 건조해 주세요.</p>
+                                <p data-i18n="a11"><strong>A:</strong> 찬물에 중성세제를 사용하여 <strong>세탁망에 넣고 울코스로 단독 세탁</strong>하시길 권장합니다. 지퍼와 버클은 모두 잠근 상태로 세탁해야 하며, 제품 변형 방지를 위해 <strong>건조기 사용은 절대 금지</strong>하며 그늘에서 자연 건조해 주세요.</p>
                             </div>
                         </div>
                         <div class="qa-item">
-                            <div class="qa-question">Q: 무상 A/S 기간은 어떻게 되나요?</div>
+                            <div class="qa-question" data-i18n="q12">Q: 무상 A/S 기간은 어떻게 되나요?</div>
                             <div class="qa-answer">
-                                <p><strong>A:</strong> 제품 구입일로부터 <strong>1년 동안 품질보증</strong>이 적용되며, 제조상의 결함이 있을 경우 무상 수리를 받으실 수 있습니다.</p>
+                                <p data-i18n="a12"><strong>A:</strong> 제품 구입일로부터 <strong>1년 동안 품질보증</strong>이 적용되며, 제조상의 결함이 있을 경우 무상 수리를 받으실 수 있습니다.</p>
                             </div>
                         </div>
                     </div>
@@ -1495,8 +1604,8 @@
 
                 <!-- Tip Box -->
                 <div class="tip-box fade-in">
-                    <div class="tip-label">TIP</div>
-                    <p>아기를 안을 때 <strong>지퍼를 밑에서 한 뼘 정도 남기고</strong> 맞물리면 훨씬 쉽게 올릴 수 있으며, 지퍼를 올린 후 한 번 더 눌러 <strong>이중 잠금</strong>을 확인하면 더욱 안전합니다.</p>
+                    <div class="tip-label" data-i18n="tip_label">TIP</div>
+                    <p data-i18n="tip_body">아기를 안을 때 <strong>지퍼를 밑에서 한 뼘 정도 남기고</strong> 맞물리면 훨씬 쉽게 올릴 수 있으며, 지퍼를 올린 후 한 번 더 눌러 <strong>이중 잠금</strong>을 확인하면 더욱 안전합니다.</p>
                 </div>
             </div>
         </section>
@@ -1504,9 +1613,9 @@
         <!-- 10일 무료 체험 및 기부 캠페인 Section -->
         <section class="slide-section campaign-section">
             <div class="slide-content">
-                <div class="slide-number fade-in">TRUST</div>
-                <h2 class="slide-title fade-in">10일 무료 체험 &<br>기부 캠페인</h2>
-                <p class="slide-body fade-in" style="margin-bottom: 50px;">
+                <div class="slide-number fade-in" data-i18n="camp_sn">TRUST</div>
+                <h2 class="slide-title fade-in" data-i18n="camp_title">10일 무료 체험 &<br>기부 캠페인</h2>
+                <p class="slide-body fade-in" style="margin-bottom: 50px;" data-i18n="camp_sub">
                     제품에 대한 강력한 자신감을 바탕으로 소비자의 만족을 보장하는 동시에<br>
                     사회적 가치를 실현하는 베베스완만의 독특한 경영 철학입니다.
                 </p>
@@ -1515,20 +1624,20 @@
                 <div class="campaign-card fade-in">
                     <div class="campaign-header">
                         <div class="campaign-icon">🎁</div>
-                        <h3 class="campaign-title">10일 무료 체험 및 100% 환불 보장</h3>
+                        <h3 class="campaign-title" data-i18n="camp_c1_title">10일 무료 체험 및 100% 환불 보장</h3>
                     </div>
                     <div class="campaign-content">
                         <div class="campaign-item">
-                            <div class="campaign-label">체험 서비스</div>
-                            <p>고객은 제품을 구매한 후 집에서 최대 <strong>10일 동안</strong> 편하게 직접 착용하며 체험해 볼 수 있습니다.</p>
+                            <div class="campaign-label" data-i18n="camp_c1_lb1">체험 서비스</div>
+                            <p data-i18n="camp_c1_p1">고객은 제품을 구매한 후 집에서 최대 <strong>10일 동안</strong> 편하게 직접 착용하며 체험해 볼 수 있습니다.</p>
                         </div>
                         <div class="campaign-item">
-                            <div class="campaign-label">자유로운 반품</div>
-                            <p>제품이 맞지 않거나 디자인, 색상, 기능 등에 만족하지 못할 경우, <strong>10일 이내에 100% 환불</strong>을 진행해 주는 '무료 반품' 서비스를 제공합니다.</p>
+                            <div class="campaign-label" data-i18n="camp_c1_lb2">자유로운 반품</div>
+                            <p data-i18n="camp_c1_p2">제품이 맞지 않거나 디자인, 색상, 기능 등에 만족하지 못할 경우, <strong>10일 이내에 100% 환불</strong>을 진행해 주는 '무료 반품' 서비스를 제공합니다.</p>
                         </div>
                         <div class="campaign-highlight">
                             <div class="highlight-number">1.3%</div>
-                            <div class="highlight-text">반품률<br><span>고객 만족의 자신감</span></div>
+                            <div class="highlight-text" data-i18n="camp_c1_ht">반품률<br><span>고객 만족의 자신감</span></div>
                         </div>
                     </div>
                 </div>
@@ -1537,16 +1646,16 @@
                 <div class="campaign-card fade-in">
                     <div class="campaign-header">
                         <div class="campaign-icon">💝</div>
-                        <h3 class="campaign-title">반품된 제품의 기부 프로세스</h3>
+                        <h3 class="campaign-title" data-i18n="camp_c2_title">반품된 제품의 기부 프로세스</h3>
                     </div>
                     <div class="campaign-content">
                         <div class="campaign-item">
-                            <div class="campaign-label">재판매 금지 및 후원</div>
-                            <p>무료 체험 기간 중 고객이 반품한 제품은 <strong>다시 판매하는 대신</strong>, 도움이 필요한 어려운 이웃에게 전달됩니다.</p>
+                            <div class="campaign-label" data-i18n="camp_c2_lb1">재판매 금지 및 후원</div>
+                            <p data-i18n="camp_c2_p1">무료 체험 기간 중 고객이 반품한 제품은 <strong>다시 판매하는 대신</strong>, 도움이 필요한 어려운 이웃에게 전달됩니다.</p>
                         </div>
                         <div class="campaign-item">
-                            <div class="campaign-label">자원 순환과 나눔</div>
-                            <p>단순 변심 등으로 반품된 양질의 제품을 폐기하지 않고 <strong>사회 취약 계층을 위한 후원 물품</strong>으로 활용함으로써 지속 가능한 나눔을 실천합니다.</p>
+                            <div class="campaign-label" data-i18n="camp_c2_lb2">자원 순환과 나눔</div>
+                            <p data-i18n="camp_c2_p2">단순 변심 등으로 반품된 양질의 제품을 폐기하지 않고 <strong>사회 취약 계층을 위한 후원 물품</strong>으로 활용함으로써 지속 가능한 나눔을 실천합니다.</p>
                         </div>
                     </div>
                 </div>
@@ -1555,25 +1664,25 @@
                 <div class="campaign-card fade-in">
                     <div class="campaign-header">
                         <div class="campaign-icon">🤝</div>
-                        <h3 class="campaign-title">주요 후원 대상 및 단체</h3>
+                        <h3 class="campaign-title" data-i18n="camp_c3_title">주요 후원 대상 및 단체</h3>
                     </div>
                     <div class="campaign-content">
                         <div class="donation-grid">
                             <div class="donation-category">
-                                <div class="donation-label">가정</div>
+                                <div class="donation-label" data-i18n="don_home">가정</div>
                                 <ul class="donation-list">
-                                    <li>미혼모 가정</li>
-                                    <li>한부모 가정</li>
-                                    <li>조부모 가정</li>
+                                    <li data-i18n="don_i1">미혼모 가정</li>
+                                    <li data-i18n="don_i2">한부모 가정</li>
+                                    <li data-i18n="don_i3">조부모 가정</li>
                                 </ul>
                             </div>
                             <div class="donation-category">
-                                <div class="donation-label">단체 및 기관</div>
+                                <div class="donation-label" data-i18n="don_orgn">단체 및 기관</div>
                                 <ul class="donation-list">
-                                    <li>월드비전</li>
-                                    <li>굿네이버스</li>
-                                    <li>선교 센터</li>
-                                    <li>보육원</li>
+                                    <li data-i18n="don_i4">월드비전</li>
+                                    <li data-i18n="don_i5">굿네이버스</li>
+                                    <li data-i18n="don_i6">선교 센터</li>
+                                    <li data-i18n="don_i7">보육원</li>
                                 </ul>
                             </div>
                         </div>
@@ -1582,7 +1691,7 @@
 
                 <!-- Campaign Summary -->
                 <div class="campaign-summary fade-in">
-                    <p>이 캠페인은 고객에게는 <strong>실패 없는 구매 경험</strong>을 제공하고,<br>
+                    <p data-i18n="camp_sum">이 캠페인은 고객에게는 <strong>실패 없는 구매 경험</strong>을 제공하고,<br>
                     기업은 <strong>사회적 책임</strong>을 다하며,<br>
                     어려운 환경의 부모들에게는 <strong>육아의 무게를 덜어주는</strong><br>
                     베베스완의 핵심적인 상생 모델입니다.</p>
@@ -1593,12 +1702,12 @@
         <!-- CTA Section -->
         <section class="cta-section">
             <div class="slide-content fade-in">
-                <h2 class="cta-title">혼자서도 모두 할 수 있는<br>육아의 새로운 기준</h2>
-                <p class="cta-desc">
+                <h2 class="cta-title" data-i18n="cta_title">혼자서도 모두 할 수 있는<br>육아의 새로운 기준</h2>
+                <p class="cta-desc" data-i18n="cta_desc">
                     베베스완 이터니티와 함께라면<br>
                     두 손을 자유롭게, 마음은 편안하게.
                 </p>
-                <a href="https://bebeswan0000.cafe24.com/shop10/surl/O/51" target="_blank" rel="noopener noreferrer" class="cta-button" onclick="gtag('event', 'click', {event_category: 'CTA', event_label: 'ETERNITY 만나보기', value: 1});">ETERNITY 만나보기</a>
+                <a href="https://bebeswan0000.cafe24.com/shop10/surl/O/51" target="_blank" rel="noopener noreferrer" class="cta-button" onclick="gtag('event', 'click', {event_category: 'CTA', event_label: 'ETERNITY 만나보기', value: 1});" data-i18n="cta_btn">ETERNITY 만나보기</a>
             </div>
         </section>
 
@@ -1607,104 +1716,45 @@
             <div class="footer-content">
                 <div>
                     <div class="footer-brand">bebeswan</div>
-                    <p class="footer-desc">
+                    <p class="footer-desc" data-i18n="footer_desc">
                         혼자서도 모두 할 수 있는<br>
                         조끼형 아기띠의 새로운 기준
                     </p>
                 </div>
                 <div>
-                    <h4 class="footer-title">SUPPORT</h4>
+                    <h4 class="footer-title" data-i18n="foot_sup">SUPPORT</h4>
                     <ul class="footer-links">
-                        <li><a href="#">사용 설명서</a></li>
-                        <li><a href="#">자주 묻는 질문</a></li>
-                        <li><a href="#">품질 보증</a></li>
+                        <li><a href="#" data-i18n="foot_l1">사용 설명서</a></li>
+                        <li><a href="#" data-i18n="foot_l2">자주 묻는 질문</a></li>
+                        <li><a href="#" data-i18n="foot_l3">품질 보증</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="footer-title">CONTACT</h4>
+                    <h4 class="footer-title" data-i18n="foot_con">CONTACT</h4>
                     <ul class="footer-links">
-                        <li><a href="#">고객센터</a></li>
-                        <li><a href="#">이메일 문의</a></li>
+                        <li><a href="#" data-i18n="foot_c1">고객센터</a></li>
+                        <li><a href="#" data-i18n="foot_c2">이메일 문의</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
+            <div class="footer-bottom" data-i18n="footer_cr">
                 © 2025 bebeswan. All rights reserved.
             </div>
         </footer>
     </div>
 
+    <script src="i18n-eternity-landing.js"></script>
     <script>
-        // ============================================
-        // Scroll-based Video Frame Controller
-        // ============================================
-        const video = document.getElementById('scrollVideo');
-        const scrollSpacer = document.querySelector('.scroll-spacer');
         const progressBar = document.getElementById('progressBar');
-        const heroSection = document.getElementById('heroSection');
-        const scrollIndicator = document.getElementById('scrollIndicator');
         const loadingScreen = document.getElementById('loadingScreen');
-        const scrollMessages = document.querySelectorAll('.scroll-message');
-        
-        let targetTime = 0;
-        let videoReady = false;
-        let videoDuration = 0;
-        
-        function handleScroll() {
-            const scrollTop = window.scrollY;
-            const maxScroll = scrollSpacer.offsetHeight - window.innerHeight;
-            const scrollProgress = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
-            
-            progressBar.style.width = `${scrollProgress * 100}%`;
-            
-            if (videoReady && videoDuration > 0) {
-                targetTime = scrollProgress * videoDuration;
-            }
-            
-            const heroOpacity = 1 - (scrollProgress * 8);
-            heroSection.style.opacity = Math.max(0, heroOpacity);
-            
-            if (scrollProgress > 0.03) {
-                scrollIndicator.classList.add('hidden');
-            } else {
-                scrollIndicator.classList.remove('hidden');
-            }
-            
-            scrollMessages.forEach(message => {
-                const start = parseFloat(message.dataset.start);
-                const end = parseFloat(message.dataset.end);
-                if (scrollProgress >= start && scrollProgress <= end) {
-                    message.classList.add('active');
-                } else {
-                    message.classList.remove('active');
-                }
-            });
+
+        function updateScrollProgress() {
+            const el = document.documentElement;
+            const max = el.scrollHeight - el.clientHeight;
+            const p = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+            progressBar.style.width = `${p * 100}%`;
         }
-        
-        function renderLoop() {
-            if (videoReady && !video.seeking) {
-                const timeDiff = Math.abs(targetTime - video.currentTime);
-                if (timeDiff > 0.01) {
-                    video.currentTime = targetTime;
-                }
-            }
-            requestAnimationFrame(renderLoop);
-        }
-        
-        function initVideo() {
-            video.addEventListener('loadedmetadata', () => {
-                videoDuration = video.duration;
-                videoReady = true;
-                setTimeout(() => loadingScreen.classList.add('hidden'), 500);
-                requestAnimationFrame(renderLoop);
-            });
-            video.addEventListener('error', () => {
-                loadingScreen.classList.add('hidden');
-            });
-            video.load();
-        }
-        
-        // Fade In Animation
+
         function handleFadeIn() {
             document.querySelectorAll('.fade-in').forEach(el => {
                 if (el.getBoundingClientRect().top < window.innerHeight * 0.85) {
@@ -1712,31 +1762,36 @@
                 }
             });
         }
-        
-        // Q&A Toggle
+
+        function hideLoading() {
+            loadingScreen.classList.add('hidden');
+        }
+
         document.querySelectorAll('.qa-question').forEach(q => {
             q.addEventListener('click', () => {
                 q.parentElement.classList.toggle('open');
             });
         });
-        
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        window.addEventListener('scroll', handleFadeIn, { passive: true });
-        
+
+        window.addEventListener('scroll', () => {
+            updateScrollProgress();
+            handleFadeIn();
+        }, { passive: true });
+
+        window.addEventListener('resize', () => {
+            updateScrollProgress();
+        }, { passive: true });
+
         document.addEventListener('DOMContentLoaded', () => {
-            initVideo();
-            handleScroll();
+            const heroImg = document.querySelector('.hero-main-visual img');
+            if (heroImg) {
+                if (heroImg.complete) hideLoading();
+                else heroImg.addEventListener('load', hideLoading, { once: true });
+            }
+            setTimeout(hideLoading, 2000);
+            updateScrollProgress();
             handleFadeIn();
         });
-        
-        setTimeout(() => {
-            if (!videoReady) {
-                loadingScreen.classList.add('hidden');
-                videoReady = true;
-                videoDuration = 5;
-                requestAnimationFrame(renderLoop);
-            }
-        }, 5000);
     </script>
 </body>
 </html>
